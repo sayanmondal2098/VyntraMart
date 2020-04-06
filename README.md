@@ -9,7 +9,6 @@ Our top priority in this re-engineering effort is the performance and user exper
 
 # Application Overview:
 Application to include the below modules as a basic ones and additionally, value adds can be included.
-
     1. eCart
     2. Order Management & Status tracking
     3. Admin Interface – User & Product Management
