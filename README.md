@@ -37,5 +37,4 @@ More Details:
 | Database  | MYSQL  |
 
 
-NFR Requirements:-
 
