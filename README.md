@@ -9,12 +9,13 @@ Our top priority in this re-engineering effort is the performance and user exper
 
 # Application Overview:
 Application to include the below modules as a basic ones and additionally, value adds can be included.
-     - eCart
-     - Order Management & Status tracking
-     - Admin Interface – User & Product Management
-     - Payment Gateway – Mock Payment related interfaces.
-     - Secured authentication mechanism
-     - Tax Calculations – Mock this service
+     
+     1. eCart
+     2. Order Management & Status tracking
+     3. Admin Interface – User & Product Management
+     4. Payment Gateway – Mock Payment related interfaces.
+     5. Secured authentication mechanism
+     6. Tax Calculations – Mock this service
     
 More Details:
      The admin interface of the current application that is used to manage product catalog and inventory works fine for now and we will continue to use it with the new customer facing application. The new application should integrate well with this. However, if the database design of the existing application imposes a negative impact on new application performance, it is ok to duplicate this data in the new application database.
