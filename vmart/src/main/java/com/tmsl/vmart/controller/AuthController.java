@@ -1,8 +1,55 @@
 package com.tmsl.vmart.controller;
 
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.tmsl.vmart.dao.CustomerDAO;
+import com.tmsl.vmart.model.Customer;
 
 @Controller
 public class AuthController {
+	
+	@Autowired
+	private CustomerDAO customerDAO;
 
+	public AuthController(CustomerDAO customerDAO) {
+		super();
+		this.customerDAO = customerDAO;
+	}
+	
+	@RequestMapping(value = "/register",method = RequestMethod.POST)
+	public ModelAndView register(@RequestParam("name") String name,
+			@RequestParam("email") String email,
+			@RequestParam("password") String password){
+		JSONObject result=new JSONObject();			
+		if(!customerDAO.isExistCustomer(email)) 
+		{
+			result.put("existence_check", "not_found");
+			Customer customer=new Customer();
+			customer.setEmail(email);
+			customer.setName(name);
+			customer.setPassword(password);
+			if(customerDAO.saveCustomer(customer))
+			{
+				result.put("registration_status", "successful");
+			}
+			else
+			{
+				result.put("registration_status", "failed");
+			}
+		}
+		else
+		{
+			result.put("existence_check", "found");
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("temp_display");
+		mv.addObject("response",result);
+		return mv;
+	}
 }

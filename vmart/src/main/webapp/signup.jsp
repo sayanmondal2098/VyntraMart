@@ -9,7 +9,7 @@
     <title>Registration</title>
 </head>
 <body>
-    <form action="reg_user" method="POST">
+    <form action="register" method="POST">
         <input type="text" name="name" id="" placeholder="Your name">
         <input type="email" name="email" id="" placeholder="Enter Email">
         <input type="password" name="password" id="" placeholder="Enter Password">
