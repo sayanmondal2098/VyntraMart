@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tmsl.vmart.dao.CustomerDAO;
 import com.tmsl.vmart.model.Customer;
 
+import static com.tmsl.vmart.utils.Encryptionmd5.md5;
+
 @Controller
 public class AuthController {
 	
@@ -33,7 +35,7 @@ public class AuthController {
 			Customer customer=new Customer();
 			customer.setEmail(email);
 			customer.setName(name);
-			customer.setPassword(password);
+			customer.setPassword(md5(password));
 			if(customerDAO.saveCustomer(customer))
 			{
 				result.put("registration_status", "successful");
