@@ -3,6 +3,8 @@ package com.tmsl.vmart.config;
 import java.util.Properties;
 
 import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -13,7 +15,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class ApplicationContextConfig {
+	
 	@Bean
+	@Autowired
 	public DataSource dataSource()
 	{
 		DriverManagerDataSource ds=new DriverManagerDataSource();
@@ -26,11 +30,12 @@ public class ApplicationContextConfig {
 	}
 	
 	@Bean
+	@Autowired
 	public LocalSessionFactoryBean sessionFactory()
 	{
 		LocalSessionFactoryBean sf=new LocalSessionFactoryBean();
 		sf.setDataSource(dataSource());
-		sf.setPackagesToScan(new String[] {"com.tmsl.vmart.model"});
+		sf.setPackagesToScan(new String[] {"com.tmsl.vmart.model","com.tmsl.vmart.dao"});
 		sf.setHibernateProperties(hibernateProperties());
 		return sf;
 	}
@@ -45,6 +50,7 @@ public class ApplicationContextConfig {
 	}
 	
 	@Bean
+	@Autowired
 	public HibernateTransactionManager getTransactionManager()
 	{
 		HibernateTransactionManager hbm=new HibernateTransactionManager();
