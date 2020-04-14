@@ -5,6 +5,7 @@ import static com.tmsl.vmart.utils.Encryptionmd5.md5;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import com.tmsl.vmart.dao.CustomerDAO;
 
 
 @Controller
+@CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 	
 	@Autowired
@@ -35,13 +37,17 @@ public class LoginController {
 				result.put("Login_status", "successful");
 				result.put("WLC", email);
 			}
+			else {
+				result.put("Invalid Password", "check your password");
+			}
 		}
 		else
 		{
-			result.put("Login_Status_check", "Failed");
+			result.put("Email not found", "Please SignUp");
 		}
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("temp_display");
+		System.out.println(email+" Logged In ");
 		mv.addObject("response",result);
 		return mv;
 	}
