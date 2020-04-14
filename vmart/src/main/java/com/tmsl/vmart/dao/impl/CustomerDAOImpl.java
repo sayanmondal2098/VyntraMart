@@ -56,5 +56,21 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 	
 	
+	public boolean verifyCustomer(String email, String password) {
+		Session session =  sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Customer> customerList = session
+				.createQuery("from Customer where email=:param_email and password=:param_pass")
+				.setParameter("param_email", email)
+				.setParameter("param_pass",password)
+				.list();
+		if (customerList.size()>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 
 }
