@@ -1,8 +1,8 @@
 package com.tmsl.vmart.model;
 
-import java.util.List;
 import java.util.Set;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,13 +18,13 @@ import javax.persistence.Table;
 public class Product {
 	
 	private Long pid;
-	private List<String> picList;
+	private Set<String> picList;
 	private String name;
 	private Category category;
 	private Double price;
 	private Discount discount;
 	private Seller seller;
-	private List<String> specification;
+	private Set<String> specification;
 	private String description;
 	private Long timestamp;
 	private Set<Rating> ratings;
@@ -39,11 +39,12 @@ public class Product {
 		this.pid = pid;
 	}
 	
-	public List<String> getPicList() {
+	@ElementCollection
+	public Set<String> getPicList() {
 		return picList;
 	}
 	
-	public void setPicList(List<String> picList) {
+	public void setPicList(Set<String> picList) {
 		this.picList = picList;
 	}
 	
@@ -83,11 +84,12 @@ public class Product {
 		this.seller = seller;
 	}
 
-	public List<String> getSpecification() {
+	@ElementCollection
+	public Set<String> getSpecification() {
 		return specification;
 	}
 	
-	public void setSpecification(List<String> specification) {
+	public void setSpecification(Set<String> specification) {
 		this.specification = specification;
 	}
 	
