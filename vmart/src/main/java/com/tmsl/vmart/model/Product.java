@@ -1,0 +1,131 @@
+package com.tmsl.vmart.model;
+
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="products")
+public class Product {
+	
+	private Long pid;
+	private List<String> picList;
+	private String name;
+	private Category category;
+	private Double price;
+	private Discount discount;
+	private Seller seller;
+	private List<String> specification;
+	private String description;
+	private Long timestamp;
+	private Set<Rating> ratings;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getPid() {
+		return pid;
+	}
+	
+	public void setPid(Long pid) {
+		this.pid = pid;
+	}
+	
+	public List<String> getPicList() {
+		return picList;
+	}
+	
+	public void setPicList(List<String> picList) {
+		this.picList = picList;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "catID",nullable = false)
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sellerID",nullable = false)
+	public Seller getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
+
+	public List<String> getSpecification() {
+		return specification;
+	}
+	
+	public void setSpecification(List<String> specification) {
+		this.specification = specification;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public Long getTimestamp() {
+		return timestamp;
+	}
+	
+	public void setTimestamp(Long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "discountID",nullable = false)
+	public Discount getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+	public Set<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<Rating> ratings) {
+		this.ratings = ratings;
+	}
+	
+	
+
+}

@@ -28,20 +28,17 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	public boolean saveCustomer(Customer customer) {
-		// TODO Auto-generated method stub
 		try {
 			Session session=sessionFactory.getCurrentSession();
 			session.save(customer);
 			return true;
 		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
 	}
 
 	public boolean isExistCustomer(String email) {
-		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Customer> customerList=session
