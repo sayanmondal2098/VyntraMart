@@ -18,7 +18,7 @@ public class Customer {
 	private String name;
 	private String email;
 	private String password;
-	private Set<Rating> ratings;
+	private Set<Rating> ratings;	//list
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

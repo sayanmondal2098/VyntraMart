@@ -67,6 +67,15 @@ public class CustomerDAOImpl implements CustomerDAO{
 			return false;
 		}
 	}
+
+	public List<Customer> getAllCustomers() {
+		Session session =  sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Customer> customerList = session
+				.createQuery("from Customer")
+				.list();
+		return customerList;
+	}
 	
 	
 
