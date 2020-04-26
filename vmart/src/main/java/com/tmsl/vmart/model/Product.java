@@ -27,7 +27,7 @@ public class Product {
 	private Set<String> specification;
 	private String description;
 	private Long timestamp;
-	private Set<Rating> ratings;
+	private Set<Rating> ratings;	//list
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,7 @@
 package com.tmsl.vmart.dao;
 
+import java.util.List;
+
 import com.tmsl.vmart.model.Customer;
 
 public interface CustomerDAO {
@@ -9,5 +11,7 @@ public interface CustomerDAO {
 	public boolean isExistCustomer(String email);
 	
 	public boolean verifyCustomer(String email, String password);
+	
+	public List<Customer> getAllCustomers(); 
 
 }
