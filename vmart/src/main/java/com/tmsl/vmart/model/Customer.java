@@ -1,6 +1,6 @@
 package com.tmsl.vmart.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +18,7 @@ public class Customer {
 	private String name;
 	private String email;
 	private String password;
-	private Set<Rating> ratings;	//list
+	private List<Rating> ratings;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,11 +55,11 @@ public class Customer {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "customer")
-	public Set<Rating> getRatings() {
+	public List<Rating> getRatings() {
 		return ratings;
 	}
 	
-	public void setRatings(Set<Rating> ratings) {
+	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
 	

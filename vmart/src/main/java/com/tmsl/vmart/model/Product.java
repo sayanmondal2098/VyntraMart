@@ -1,5 +1,6 @@
 package com.tmsl.vmart.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
@@ -27,7 +28,7 @@ public class Product {
 	private Set<String> specification;
 	private String description;
 	private Long timestamp;
-	private Set<Rating> ratings;	//list
+	private List<Rating> ratings;	//list
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -120,11 +121,11 @@ public class Product {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
-	public Set<Rating> getRatings() {
+	public List<Rating> getRatings() {
 		return ratings;
 	}
 
-	public void setRatings(Set<Rating> ratings) {
+	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
 	
