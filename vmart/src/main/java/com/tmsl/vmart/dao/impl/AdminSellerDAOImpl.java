@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar;
 import com.tmsl.vmart.config.ApplicationContextConfig;
 import com.tmsl.vmart.dao.AdminSellerDAO;
 import com.tmsl.vmart.model.AdminSeller;
@@ -72,14 +74,24 @@ public class AdminSellerDAOImpl implements AdminSellerDAO {
 		}
 	}
 
-	public List<Seller> getAllSellers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session
+				.createQuery("from products")
+				.list();
+		return pList;
 	}
+
+	public List<Seller> getAllSellers() {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Seller> sList = session
+				.createQuery("from seller")
+				.list();
+		return sList;
+	}
+
 
 }

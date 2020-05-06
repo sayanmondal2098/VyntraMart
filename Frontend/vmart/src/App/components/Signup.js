@@ -1,10 +1,13 @@
+// import React, { Component } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
-import "./css/main.css";
-import logo from "./img/vmart-logo.png";
-import { BACKEND_URL,makeid } from "./config/Config";
-import axios from "axios";
+import { axios } from "axios";
 import { Redirect } from "react-router-dom";
+import { BACKEND_URL,makeid } from "../config/Config";
+import "../../Assects/css/main.css";
+import logo from "../../Assects//img//vmart-logo.png";
+
+
 
 class Signup extends React.Component {
   constructor(props) {
@@ -20,7 +23,7 @@ class Signup extends React.Component {
       email: "",
       password: "",
       repassword: "",
-      loggedIn
+      loggedIn         
     };
   }
 
@@ -85,7 +88,10 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-      this.register_user();
+      alert("Ready for form submission");
+      console.log("Ready for form submission");
+    } else {
+      alert("Not ready for form submission");
     }
   };
 
@@ -181,7 +187,7 @@ class Signup extends React.Component {
               className="form_ed"
               type="password"
               onKeyDown={this.txt_tracker}
-              maxLength="1024"
+              maxLength="32"
               name="password"
               id="password"
               value={this.state.password}
@@ -197,7 +203,7 @@ class Signup extends React.Component {
             <br />
             <input
               className="form_ed"
-              maxLength="1024"
+              maxLength="32"
               onKeyDown={this.txt_tracker}
               type="password"
               name="repassword"

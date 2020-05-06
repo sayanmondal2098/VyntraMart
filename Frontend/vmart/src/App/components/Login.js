@@ -1,8 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import "./css/main.css";
-import logo from "./img/vmart-logo.png";
-import { BACKEND_URL,makeid } from "./config/Config";
+import "../../Assects/css/main.css";
+import logo from "../../Assects//img//vmart-logo.png";
+import { BACKEND_URL,makeid } from "../config/Config";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 

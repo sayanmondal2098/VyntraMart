@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import "./css/main.css";
-import logo from "./img/vmart-logo.png";
+import "../../Assects/css/main.css";
+import logo from "../../Assects/img/vmart-logo.png";
 import { Redirect } from "react-router-dom";
 
 class Home extends React.Component {
