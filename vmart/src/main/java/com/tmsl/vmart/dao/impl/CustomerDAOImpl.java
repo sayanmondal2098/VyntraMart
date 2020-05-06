@@ -76,6 +76,16 @@ public class CustomerDAOImpl implements CustomerDAO{
 				.list();
 		return customerList;
 	}
+
+	public Customer getCustomerByLoginCredentials(String email, String password) {
+		Session session =  sessionFactory.getCurrentSession();
+		Customer customer=(Customer) session
+				.createQuery("from Customer where email=:param_email and password=:param_pass")
+				.setParameter("param_email", email)
+				.setParameter("param_pass",password)
+				.uniqueResult();
+		return customer;
+	}
 	
 	
 
