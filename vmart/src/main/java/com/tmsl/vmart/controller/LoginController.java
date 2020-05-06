@@ -4,12 +4,13 @@ import static com.tmsl.vmart.utils.Encryptionmd5.md5;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.tmsl.vmart.dao.CustomerDAO;
 
@@ -27,29 +28,25 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
-	public ModelAndView Login(@RequestParam("email") String email,
+	public ResponseEntity<String> Login(@RequestParam("email") String email,
 			@RequestParam("password") String password) {
 		JSONObject result=new JSONObject();	
-		if(customerDAO.isExistCustomer(email)==true) 
+		if(customerDAO.isExistCustomer(email)) 
 		{
-			if(customerDAO.verifyCustomer(email, md5(password))==true)
+			result.put("existence_check", "found");
+			if(customerDAO.verifyCustomer(email, md5(password)))
 			{
-				result.put("Login_status", "successful");
-				result.put("WLC", email);
+				result.put("login_status", "successful");
 			}
 			else {
-				result.put("Invalid Password", "check your password");
+				result.put("login_status", "failed");
 			}
 		}
 		else
 		{
-			result.put("Email not found", "Please SignUp");
+			result.put("existence_check", "not_found");
 		}
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("temp_display");
-		System.out.println(email+" Logged In ");
-		mv.addObject("response",result);
-		return mv;
+		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
 
 }

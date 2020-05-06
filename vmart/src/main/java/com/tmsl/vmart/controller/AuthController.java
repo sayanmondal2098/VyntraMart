@@ -2,11 +2,13 @@ package com.tmsl.vmart.controller;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.tmsl.vmart.dao.CustomerDAO;
 import com.tmsl.vmart.model.Customer;
@@ -14,6 +16,7 @@ import com.tmsl.vmart.model.Customer;
 import static com.tmsl.vmart.utils.Encryptionmd5.md5;
 
 @Controller
+@CrossOrigin
 public class AuthController {
 	
 	@Autowired
@@ -25,7 +28,7 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = "/register",method = RequestMethod.POST)
-	public ModelAndView register(@RequestParam("name") String name,
+	public ResponseEntity<String> register(@RequestParam("name") String name,
 			@RequestParam("email") String email,
 			@RequestParam("password") String password){
 		JSONObject result=new JSONObject();			
@@ -49,9 +52,6 @@ public class AuthController {
 		{
 			result.put("existence_check", "found");
 		}
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("temp_display");
-		mv.addObject("response",result);
-		return mv;
+		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
 }
