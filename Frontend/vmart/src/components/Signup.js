@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import "./css/main.css";
 import logo from "./img/vmart-logo.png";
+import { validation, validationString } from "./Test";
 
-class Signup extends Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,6 +38,8 @@ class Signup extends Component {
       this.errormsg("err_repassword", "Password doesn't match");
       flag = false;
     }
+    validation(this.errormsg);
+    validationString(this.errormsg);
     return flag;
   }
 
@@ -77,6 +81,7 @@ class Signup extends Component {
     event.preventDefault();
     if (this.validation()) {
       alert("Ready for form submission");
+      console.log("Ready for form submission");
     } else {
       alert("Not ready for form submission");
     }
@@ -137,7 +142,7 @@ class Signup extends Component {
               className="form_ed"
               type="password"
               onKeyDown={this.txt_tracker}
-              maxLength="1024"
+              maxLength="32"
               name="password"
               id="password"
               value={this.state.password}
@@ -153,7 +158,7 @@ class Signup extends Component {
             <br />
             <input
               className="form_ed"
-              maxLength="1024"
+              maxLength="32"
               onKeyDown={this.txt_tracker}
               type="password"
               name="repassword"
