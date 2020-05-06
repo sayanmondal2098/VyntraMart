@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 // import React, { Component } from "react";
-=======
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
 import React from "react";
 import { Helmet } from "react-helmet";
-import "./css/main.css";
-import logo from "./img/vmart-logo.png";
-<<<<<<< HEAD
-import { validation, validationString } from "./Test";
-=======
-import { BACKEND_URL,makeid } from "./config/Config";
-import axios from "axios";
+import { axios } from "axios";
 import { Redirect } from "react-router-dom";
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
+import { BACKEND_URL,makeid } from "../config/Config";
+import "../../Assects/css/main.css";
+import logo from "../../Assects//img//vmart-logo.png";
+
+
 
 class Signup extends React.Component {
   constructor(props) {
@@ -28,7 +23,7 @@ class Signup extends React.Component {
       email: "",
       password: "",
       repassword: "",
-      loggedIn
+      loggedIn         
     };
   }
 
@@ -53,8 +48,6 @@ class Signup extends React.Component {
       this.errormsg("err_repassword", "Password doesn't match");
       flag = false;
     }
-    validation(this.errormsg);
-    validationString(this.errormsg);
     return flag;
   }
 
@@ -95,14 +88,10 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-<<<<<<< HEAD
       alert("Ready for form submission");
       console.log("Ready for form submission");
     } else {
       alert("Not ready for form submission");
-=======
-      this.register_user();
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
     }
   };
 
