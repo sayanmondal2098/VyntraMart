@@ -12,6 +12,8 @@ public interface CustomerDAO {
 	
 	public boolean verifyCustomer(String email, String password);
 	
+	public Customer getCustomerByLoginCredentials(String email, String password);
+	
 	public List<Customer> getAllCustomers(); 
 
 }

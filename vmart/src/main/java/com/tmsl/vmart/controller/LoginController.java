@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tmsl.vmart.dao.CustomerDAO;
+import com.tmsl.vmart.model.Customer;
 
 
 @Controller
@@ -37,6 +38,9 @@ public class LoginController {
 			if(customerDAO.verifyCustomer(email, md5(password)))
 			{
 				result.put("login_status", "successful");
+				Customer customer=customerDAO.getCustomerByLoginCredentials(email, md5(password));
+				result.put("uid", customer.getCid());
+				result.put("name", customer.getName());
 			}
 			else {
 				result.put("login_status", "failed");

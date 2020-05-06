@@ -2,18 +2,25 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import "./css/main.css";
 import logo from "./img/vmart-logo.png";
-import { BACKEND_URL } from "./config/Config";
+import { BACKEND_URL,makeid } from "./config/Config";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-
+    const sess_token=localStorage.getItem("session_token");
+    let loggedIn=true;
+    if(sess_token==null)
+    {
+      loggedIn=false;
+    }
     this.state = {
       name: "",
       email: "",
       password: "",
       repassword: "",
+      loggedIn
     };
   }
 
@@ -102,7 +109,12 @@ class Signup extends React.Component {
         this.errormsg("err_email", "Email already in use");
       } else {
         if (response.data.registration_status === "successful") {
-          alert("User registered successfully!");
+          localStorage.setItem("session_token",makeid(15));
+          localStorage.setItem("uid",response.data.uid);
+          localStorage.setItem("name",response.data.name);
+          this.setState({
+            loggedIn:true
+          })
         } else {
           alert("User not registered");
         }
@@ -111,6 +123,10 @@ class Signup extends React.Component {
   }
 
   render() {
+    if(this.state.loggedIn)
+    {
+      return <Redirect to="/"/>
+    }
     return (
       <div className="Signup">
         <Helmet>

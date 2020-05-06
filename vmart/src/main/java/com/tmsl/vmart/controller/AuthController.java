@@ -42,6 +42,9 @@ public class AuthController {
 			if(customerDAO.saveCustomer(customer))
 			{
 				result.put("registration_status", "successful");
+				Customer cust=customerDAO.getCustomerByLoginCredentials(email, md5(password));
+				result.put("uid", cust.getCid());
+				result.put("name", cust.getName());
 			}
 			else
 			{
