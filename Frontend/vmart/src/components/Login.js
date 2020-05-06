@@ -1,20 +1,12 @@
-<<<<<<< HEAD
-// import React, { Component } from "react";
-=======
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
 import React from "react";
 import { Helmet } from "react-helmet";
 import "./css/main.css";
 import logo from "./img/vmart-logo.png";
-<<<<<<< HEAD
-import { validation, validationString } from "./Test";
-=======
 import { BACKEND_URL,makeid } from "./config/Config";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
 
-class Signup extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     const sess_token=localStorage.getItem("session_token");
@@ -24,20 +16,14 @@ class Signup extends React.Component {
       loggedIn=false;
     }
     this.state = {
-      name: "",
       email: "",
       password: "",
-      repassword: "",
       loggedIn
     };
   }
 
   validation() {
     var flag = true;
-    if (this.state.name === "") {
-      this.errormsg("err_name", "Enter name");
-      flag = false;
-    }
     if (this.state.email === "") {
       this.errormsg("err_email", "Enter email");
       flag = false;
@@ -45,16 +31,7 @@ class Signup extends React.Component {
     if (this.state.password === "") {
       this.errormsg("err_password", "Enter password");
       flag = false;
-    } else if (this.state.password.length < 6) {
-      this.errormsg("err_password", "Password too small");
-      flag = false;
     }
-    if (this.state.repassword !== this.state.password) {
-      this.errormsg("err_repassword", "Password doesn't match");
-      flag = false;
-    }
-    validation(this.errormsg);
-    validationString(this.errormsg);
     return flag;
   }
 
@@ -68,12 +45,6 @@ class Signup extends React.Component {
     document.getElementById("err_" + event.target.id).style.display = "none";
   }
 
-  handleNameChange = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
-  };
-
   handleEmailChange = (event) => {
     this.setState({
       email: event.target.value,
@@ -86,31 +57,18 @@ class Signup extends React.Component {
     });
   };
 
-  handleRepasswordChange = (event) => {
-    this.setState({
-      repassword: event.target.value,
-    });
-  };
-
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-<<<<<<< HEAD
-      alert("Ready for form submission");
-      console.log("Ready for form submission");
-    } else {
-      alert("Not ready for form submission");
-=======
-      this.register_user();
->>>>>>> 2d525ce5ac10b676e8694b7ee28bbc005bc19cee
+      this.login_user();
     }
   };
 
-  register_user() {
+  login_user() {
     axios
       .post(
         BACKEND_URL +
-          `/register?name=${this.state.name}&email=${this.state.email}&password=${this.state.password}`
+          `/login?email=${this.state.email}&password=${this.state.password}`
       )
       .then((response) => {
         this.responseController(response);
@@ -122,10 +80,10 @@ class Signup extends React.Component {
 
   responseController(response) {
     if (response.status === 200) {
-      if (response.data.existence_check === "found") {
-        this.errormsg("err_email", "Email already in use");
+      if (response.data.existence_check === "not_found") {
+        this.errormsg("err_email", "Email does not exist. Sign Up first");
       } else {
-        if (response.data.registration_status === "successful") {
+        if (response.data.login_status === "successful") {
           localStorage.setItem("session_token",makeid(15));
           localStorage.setItem("uid",response.data.uid);
           localStorage.setItem("name",response.data.name);
@@ -133,7 +91,8 @@ class Signup extends React.Component {
             loggedIn:true
           })
         } else {
-          alert("User not registered");
+          this.errormsg("err_email", "Invalid credential");
+          this.errormsg("err_password", "Invalid credential");
         }
       }
     }
@@ -145,34 +104,17 @@ class Signup extends React.Component {
       return <Redirect to="/"/>
     }
     return (
-      <div className="Signup">
+      <div className="Login">
         <Helmet>
-          <title>VMart Registration</title>
+          <title>VMart Login</title>
         </Helmet>
         <div className="head">
           <img className="head_logo" src={logo} alt="Logo" />
         </div>
         <div className="form_container">
-          <div className="form_head">Create Account</div>
+          <div className="form_head">Login</div>
           <br />
           <form onSubmit={this.handleSubmit}>
-            <label className="form">
-              <b>Your name</b>
-            </label>
-            <br />
-            <input
-              className="form_ed"
-              type="text"
-              onKeyDown={this.txt_tracker}
-              maxLength="50"
-              name="name"
-              id="name"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-            />
-            <br />
-            <label className="form_error" id="err_name"></label>
-            <br />
             <label className="form">
               <b>Email</b>
             </label>
@@ -198,41 +140,23 @@ class Signup extends React.Component {
               className="form_ed"
               type="password"
               onKeyDown={this.txt_tracker}
-              maxLength="32"
+              maxLength="1024"
               name="password"
               id="password"
               value={this.state.password}
               onChange={this.handlePasswordChange}
-              placeholder="At least 6 characters"
             />
             <br />
             <label className="form_error" id="err_password"></label>
-            <br />
-            <label className="form">
-              <b>Re-enter Password</b>
-            </label>
-            <br />
-            <input
-              className="form_ed"
-              maxLength="32"
-              onKeyDown={this.txt_tracker}
-              type="password"
-              name="repassword"
-              id="repassword"
-              value={this.state.repassword}
-              onChange={this.handleRepasswordChange}
-            />
-            <br />
-            <label className="form_error" id="err_repassword"></label>
             <br />
             <input className="form_btn" type="submit" value="Continue" />
           </form>
           <br />
           <br />
           <label className="form">
-            Already have an account?{" "}
-            <a className="emphasis_link" href="login">
-              Sign in
+            Don't have an account?{" "}
+            <a className="emphasis_link" href="signup">
+              Sign Up
             </a>
           </label>
         </div>
@@ -241,4 +165,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Login;
