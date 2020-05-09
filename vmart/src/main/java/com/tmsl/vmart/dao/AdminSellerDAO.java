@@ -5,6 +5,7 @@ import java.util.List;
 import com.tmsl.vmart.model.Product;
 import com.tmsl.vmart.model.Seller;
 
+
 public interface AdminSellerDAO {
 	
 	public boolean saveSeller(Seller seller);

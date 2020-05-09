@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "products")
 @Table(name="products")
 public class Product {
 	
@@ -77,6 +77,7 @@ public class Product {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sellerID",nullable = false)
+	
 	public Seller getSeller() {
 		return seller;
 	}
