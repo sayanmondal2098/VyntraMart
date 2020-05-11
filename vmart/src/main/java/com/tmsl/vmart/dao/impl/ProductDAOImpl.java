@@ -25,12 +25,47 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	public boolean saveproduct(Product product) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.save(product);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Product> pList = session.createQuery("from products").list();
 		return pList;
 	}
+
+	public boolean isExistingProduct(Long pId) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
+				.setParameter("param_pId", pId)
+				.list();
+		if (pList.size()>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public Product getProductBypId(Long pId) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
+				.setParameter("param_pId", pId)
+				.list();
+		return pList.get(0);
+	}
+
+
 
 }

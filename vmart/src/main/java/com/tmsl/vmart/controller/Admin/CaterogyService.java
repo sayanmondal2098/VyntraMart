@@ -27,7 +27,7 @@ public class CaterogyService {
 	public ResponseEntity<String> addCategary(@RequestParam("catName") String catName,
 			@RequestParam("sizeChart") String sizeChartString) {
 		JSONObject result = new JSONObject();
-		if (!categoryDAO.isExistingCatagory(sizeChartString)) {
+		if (!categoryDAO.isExistingCatagory(catName)) {
 			result.put("existence_check", "not_found");
 			Category category = new Category();
 			category.setCatName(catName);
