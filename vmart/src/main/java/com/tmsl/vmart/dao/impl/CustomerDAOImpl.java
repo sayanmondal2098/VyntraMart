@@ -18,8 +18,8 @@ import com.tmsl.vmart.model.Customer;
 @Repository
 @Transactional
 @ContextConfiguration(classes = { ApplicationContextConfig.class })
-public class CustomerDAOImpl implements CustomerDAO{
-	
+public class CustomerDAOImpl implements CustomerDAO {
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -29,7 +29,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	public boolean saveCustomer(Customer customer) {
 		try {
-			Session session=sessionFactory.getCurrentSession();
+			Session session = sessionFactory.getCurrentSession();
 			session.save(customer);
 			return true;
 		} catch (HibernateException e) {
@@ -39,29 +39,23 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	public boolean isExistCustomer(String email) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Customer> customerList=session
-				.createQuery("from Customer where email=:param_email")
-				.setParameter("param_email",email)
-				.list();
-		if(customerList.size()>0)
-		{
+		List<Customer> customerList = session.createQuery("from Customer where email=:param_email")
+				.setParameter("param_email", email).list();
+		if (customerList.size() > 0) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
 	public boolean verifyCustomer(String email, String password) {
-		Session session =  sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Customer> customerList = session
 				.createQuery("from Customer where email=:param_email and password=:param_pass")
-				.setParameter("param_email", email)
-				.setParameter("param_pass",password)
-				.list();
-		if (customerList.size()>0) {
+				.setParameter("param_email", email).setParameter("param_pass", password).list();
+		if (customerList.size() > 0) {
 			return true;
 		} else {
 			return false;
@@ -69,24 +63,18 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	public List<Customer> getAllCustomers() {
-		Session session =  sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Customer> customerList = session
-				.createQuery("from Customer")
-				.list();
+		List<Customer> customerList = session.createQuery("from Customer").list();
 		return customerList;
 	}
 
 	public Customer getCustomerByLoginCredentials(String email, String password) {
-		Session session =  sessionFactory.getCurrentSession();
-		Customer customer=(Customer) session
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = (Customer) session
 				.createQuery("from Customer where email=:param_email and password=:param_pass")
-				.setParameter("param_email", email)
-				.setParameter("param_pass",password)
-				.uniqueResult();
+				.setParameter("param_email", email).setParameter("param_pass", password).uniqueResult();
 		return customer;
 	}
-	
-	
 
 }

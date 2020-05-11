@@ -29,23 +29,18 @@ public class AdminSellerDAOImpl implements AdminSellerDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Product> pList = session
-				.createQuery("from products")
-				.list();
+		List<Product> pList = session.createQuery("from products").list();
 		return pList;
 	}
 
 	public List<Seller> getAllSellers() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Seller> sList = session
-				.createQuery("from seller")
-				.list();
+		List<Seller> sList = session.createQuery("from seller").list();
 		return sList;
 	}
 
@@ -59,6 +54,5 @@ public class AdminSellerDAOImpl implements AdminSellerDAO {
 			return false;
 		}
 	}
-
 
 }

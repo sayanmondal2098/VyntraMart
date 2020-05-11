@@ -15,9 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "products")
-@Table(name="products")
+@Table(name = "products")
 public class Product {
-	
+
 	private Long pid;
 	private Set<String> picList;
 	private String name;
@@ -28,37 +28,37 @@ public class Product {
 	private Set<String> specification;
 	private String description;
 	private Long timestamp;
-	private List<Rating> ratings;	//list
-	
+	private List<Rating> ratings; // list
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getPid() {
 		return pid;
 	}
-	
+
 	public void setPid(Long pid) {
 		this.pid = pid;
 	}
-	
+
 	@ElementCollection
 	public Set<String> getPicList() {
 		return picList;
 	}
-	
+
 	public void setPicList(Set<String> picList) {
 		this.picList = picList;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "catID",nullable = false)
+	@JoinColumn(name = "catID", nullable = false)
 	public Category getCategory() {
 		return category;
 	}
@@ -70,14 +70,14 @@ public class Product {
 	public Double getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sellerID",nullable = false)
-	
+	@JoinColumn(name = "sellerID", nullable = false)
+
 	public Seller getSeller() {
 		return seller;
 	}
@@ -90,29 +90,29 @@ public class Product {
 	public Set<String> getSpecification() {
 		return specification;
 	}
-	
+
 	public void setSpecification(Set<String> specification) {
 		this.specification = specification;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public Long getTimestamp() {
 		return timestamp;
 	}
-	
+
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "discountID",nullable = false)
+	@JoinColumn(name = "discountID", nullable = false)
 	public Discount getDiscount() {
 		return discount;
 	}
@@ -121,7 +121,7 @@ public class Product {
 		this.discount = discount;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	public List<Rating> getRatings() {
 		return ratings;
 	}
@@ -129,7 +129,5 @@ public class Product {
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
-	
-	
 
 }

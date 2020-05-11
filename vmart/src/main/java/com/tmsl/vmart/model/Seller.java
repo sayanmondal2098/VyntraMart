@@ -83,7 +83,7 @@ public class Seller {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name="seller")
+	@JoinColumn(name = "seller")
 	public Set<Product> getProducts() {
 		return products;
 	}

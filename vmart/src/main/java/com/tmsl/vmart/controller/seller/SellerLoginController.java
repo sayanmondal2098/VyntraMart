@@ -18,40 +18,34 @@ import com.tmsl.vmart.model.Seller;
 @CrossOrigin
 @Controller
 public class SellerLoginController {
-	
+
 	@Autowired
 	private SellerDAO sellerDAO;
-	
+
 	public SellerLoginController(SellerDAO sellerDAO) {
 		super();
 		this.sellerDAO = sellerDAO;
 	}
-	
-	@RequestMapping(value = "/sellerRegister",method = RequestMethod.POST)
+
+	@RequestMapping(value = "/sellerRegister", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestParam("name") String name,
-			@RequestParam("password") String password){
-		JSONObject result=new JSONObject();			
-		if(!sellerDAO.isExistingSeller(name))
-		{
+			@RequestParam("password") String password) {
+		JSONObject result = new JSONObject();
+		if (!sellerDAO.isExistingSeller(name)) {
 			result.put("existence_check", "not_found");
-			Seller seller=new Seller();
+			Seller seller = new Seller();
 			seller.setName(name);
 			seller.setPassword(md5(password));
-			if(sellerDAO.saveSeller(seller))
-			{
+			if (sellerDAO.saveSeller(seller)) {
 				result.put("registration_status", "successful");
-				Seller selr=sellerDAO.getSellerByLoginCredentials(name, password);
+				Seller selr = sellerDAO.getSellerByLoginCredentials(name, password);
 				result.put("sid", selr.getSellerID());
 				result.put("name", selr.getName());
-				result.put("",selr.getPhoneNo());
-			}
-			else
-			{
+				result.put("", selr.getPhoneNo());
+			} else {
 				result.put("registration_status", "failed");
 			}
-		}
-		else
-		{
+		} else {
 			result.put("existence_check", "found");
 		}
 		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);

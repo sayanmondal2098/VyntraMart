@@ -14,15 +14,14 @@ import com.tmsl.vmart.config.ApplicationContextConfig;
 import com.tmsl.vmart.dao.CategoryDAO;
 import com.tmsl.vmart.model.Category;
 
-
 @Repository
 @Transactional
-@ContextConfiguration(classes = {ApplicationContextConfig.class})
-public class CategoryDAOImpl implements CategoryDAO{
-	
+@ContextConfiguration(classes = { ApplicationContextConfig.class })
+public class CategoryDAOImpl implements CategoryDAO {
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public CategoryDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -40,29 +39,24 @@ public class CategoryDAOImpl implements CategoryDAO{
 	}
 
 	public boolean isExistingCatagory(String catName) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Category> categories = session
-				.createQuery("from Category where catName=:param_catName")
-				.setParameter("param_catName",catName)
-				.list();
-		if (categories.size() >0) {
+		List<Category> categories = session.createQuery("from Category where catName=:param_catName")
+				.setParameter("param_catName", catName).list();
+		if (categories.size() > 0) {
 			return true;
 		}
 		return false;
 	}
 
 	public Category getCategoriesByCatName(String catName) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Category> categorie = session
-				.createQuery("from Category where catName=:param_catName")
-				.setParameter("param_catName",catName)
-				.list();
-		return  categorie.get(0);
+		List<Category> categorie = session.createQuery("from Category where catName=:param_catName")
+				.setParameter("param_catName", catName).list();
+		return categorie.get(0);
 	}
-	
-	
+
 	public boolean removeCatagory(Category category) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
@@ -73,7 +67,5 @@ public class CategoryDAOImpl implements CategoryDAO{
 			return false;
 		}
 	}
-
-	
 
 }

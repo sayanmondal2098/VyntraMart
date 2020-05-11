@@ -17,11 +17,10 @@ import com.tmsl.vmart.model.Product;
 @Repository
 @Transactional
 @ContextConfiguration(classes = { ApplicationContextConfig.class })
-public class ProductDAOImpl implements ProductDAO{
-	
+public class ProductDAOImpl implements ProductDAO {
+
 	@Autowired
 	private SessionFactory sessionFactory;
-
 
 	public ProductDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -30,9 +29,7 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Product> pList = session
-				.createQuery("from products")
-				.list();
+		List<Product> pList = session.createQuery("from products").list();
 		return pList;
 	}
 
