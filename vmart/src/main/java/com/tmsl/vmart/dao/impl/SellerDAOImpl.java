@@ -42,7 +42,7 @@ public class SellerDAOImpl implements SellerDAO {
 	public boolean isExistingSeller(String name) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Seller> customerList = session.createQuery("from seller where name=:param_name")
+		List<Seller> customerList = session.createQuery("from Seller where name=:param_name")
 				.setParameter("param_name", name).list();
 		if (customerList.size() > 0) {
 			return true;
@@ -53,7 +53,7 @@ public class SellerDAOImpl implements SellerDAO {
 	public boolean verifySeller(String name, String password) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Seller> sellerList = session.createQuery("from seller where name=:param_name and password=:param_pass")
+		List<Seller> sellerList = session.createQuery("from Seller where name=:param_name and password=:param_pass")
 				.setParameter("param_name", name).setParameter("param_pass", password).list();
 		if (sellerList.size() > 0) {
 			return true;
@@ -64,7 +64,7 @@ public class SellerDAOImpl implements SellerDAO {
 
 	public Seller getSellerByLoginCredentials(String name, String password) {
 		Session session = sessionFactory.getCurrentSession();
-		Seller seller = (Seller) session.createQuery("from seller where name=:param_name and password=:param_pass")
+		Seller seller = (Seller) session.createQuery("from Seller where name=:param_name and password=:param_pass")
 				.setParameter("param_name", name).setParameter("param_pass", password).uniqueResult();
 		return seller;
 	}
