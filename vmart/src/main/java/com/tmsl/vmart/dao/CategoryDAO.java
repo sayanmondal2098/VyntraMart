@@ -8,6 +8,8 @@ public interface CategoryDAO {
 	
 	public boolean isExistingCatagory(String sizeChart);
 	
+	public Category getCategoriesByCatName(String catName);
+	
 	public boolean removeCatagory(Category category);
 
 }

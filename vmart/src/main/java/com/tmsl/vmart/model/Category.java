@@ -15,6 +15,7 @@ import javax.persistence.Table;
 public class Category {
 	
 	private Long catID;
+	private String catName;
 	private String sizeChart;
 	private Set<Product> products;
 	
@@ -43,6 +44,14 @@ public class Category {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+
+	public String getCatName() {
+		return catName;
+	}
+
+	public void setCatName(String catName) {
+		this.catName = catName;
 	}
 
 }

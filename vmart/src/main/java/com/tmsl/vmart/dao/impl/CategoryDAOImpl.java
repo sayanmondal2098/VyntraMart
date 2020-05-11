@@ -39,12 +39,12 @@ public class CategoryDAOImpl implements CategoryDAO{
 		}
 	}
 
-	public boolean isExistingCatagory(String sizeChart) {
+	public boolean isExistingCatagory(String catName) {
 		Session session=sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Category> categories = session
-				.createQuery("from Category where sizeChart=:param_sizeChart")
-				.setParameter("param_sizeChart",sizeChart)
+				.createQuery("from Category where catName=:param_catName")
+				.setParameter("param_catName",catName)
 				.list();
 		if (categories.size() >0) {
 			return true;
@@ -52,9 +52,28 @@ public class CategoryDAOImpl implements CategoryDAO{
 		return false;
 	}
 
-	public boolean removeCatagory(Category category) {
-		// TODO Auto-generated method stub
-		return false;
+	public Category getCategoriesByCatName(String catName) {
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Category> categorie = session
+				.createQuery("from Category where catName=:param_catName")
+				.setParameter("param_catName",catName)
+				.list();
+		return  categorie.get(0);
 	}
+	
+	
+	public boolean removeCatagory(Category category) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			session.remove(category);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
 
 }
