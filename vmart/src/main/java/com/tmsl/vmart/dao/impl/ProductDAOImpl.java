@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,51 +11,61 @@ import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.tmsl.vmart.config.ApplicationContextConfig;
-import com.tmsl.vmart.dao.AdminSellerDAO;
-<<<<<<< HEAD
-import com.tmsl.vmart.model.Category;
-=======
-import com.tmsl.vmart.model.AdminSeller;
->>>>>>> 105dc22d1951618d4809cbc58d4b206bccb041ca
+import com.tmsl.vmart.dao.ProductDAO;
 import com.tmsl.vmart.model.Product;
-import com.tmsl.vmart.model.Seller;
 
 @Repository
 @Transactional
 @ContextConfiguration(classes = { ApplicationContextConfig.class })
-public class AdminSellerDAOImpl implements AdminSellerDAO {
+public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public AdminSellerDAOImpl(SessionFactory sessionFactory) {
+	public ProductDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	public boolean saveproduct(Product product) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.save(product);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Product> pList = session.createQuery("from products").list();
 		return pList;
 	}
 
-	public List<Seller> getAllSellers() {
+	public boolean isExistingProduct(Long pId) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Seller> sList = session.createQuery("from seller").list();
-		return sList;
-	}
-
-	public boolean saveCatagory(Category category) {
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			session.save(category);
+		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
+				.setParameter("param_pId", pId)
+				.list();
+		if (pList.size()>0) {
 			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
+		} else {
 			return false;
 		}
 	}
+	
+	public Product getProductBypId(Long pId) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
+				.setParameter("param_pId", pId)
+				.list();
+		return pList.get(0);
+	}
+
+
 
 }

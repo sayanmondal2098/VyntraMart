@@ -11,38 +11,47 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categories")
+@Table(name = "Categories")
 public class Category {
-	
+
 	private Long catID;
+	private String catName;
 	private String sizeChart;
 	private Set<Product> products;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getCatID() {
 		return catID;
 	}
-	
+
 	public void setCatID(Long catID) {
 		this.catID = catID;
 	}
-	
+
 	public String getSizeChart() {
 		return sizeChart;
 	}
-	
+
 	public void setSizeChart(String sizeChart) {
 		this.sizeChart = sizeChart;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "category")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	public Set<Product> getProducts() {
 		return products;
 	}
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+
+	public String getCatName() {
+		return catName;
+	}
+
+	public void setCatName(String catName) {
+		this.catName = catName;
 	}
 
 }
