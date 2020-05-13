@@ -11,12 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar;
 import com.tmsl.vmart.config.ApplicationContextConfig;
 import com.tmsl.vmart.dao.AdminSellerDAO;
 import com.tmsl.vmart.model.AdminSeller;
-import com.tmsl.vmart.model.Customer;
 import com.tmsl.vmart.model.Product;
 import com.tmsl.vmart.model.Seller;
 
