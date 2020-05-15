@@ -12,6 +12,6 @@ public interface ProductDAO {
 
 	public boolean isExistingProduct(Long pId);
 
-	public Product getProductBypId(Long pId);
+	public Product getProductBySellerName(Integer pId);
 
 }
