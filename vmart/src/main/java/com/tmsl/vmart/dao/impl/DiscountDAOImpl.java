@@ -41,8 +41,8 @@ public class DiscountDAOImpl implements DiscountDAO {
 	public Discount getDiscountByValue(double percentage) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Discount> categorie = session.createQuery("from Category where percentage=:param_percentage")
-				.setParameter("param_catName", percentage).list();
+		List<Discount> categorie = session.createQuery("from Discount where percentage=:param_percentage")
+				.setParameter("param_percentage", percentage).list();
 		return categorie.get(0);
 	}
 

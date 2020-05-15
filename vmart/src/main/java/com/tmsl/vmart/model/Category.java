@@ -1,5 +1,6 @@
 package com.tmsl.vmart.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Category {
 	private Long catID;
 	private String catName;
 	private String sizeChart;
-	private Set<Product> products;
+	private Set<Product> products = new HashSet<Product>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

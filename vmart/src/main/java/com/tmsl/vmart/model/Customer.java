@@ -1,5 +1,6 @@
 package com.tmsl.vmart.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class Customer {
 	private String name;
 	private String email;
 	private String password;
-	private List<Rating> ratings;
+	private List<Rating> ratings = new ArrayList<Rating>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
