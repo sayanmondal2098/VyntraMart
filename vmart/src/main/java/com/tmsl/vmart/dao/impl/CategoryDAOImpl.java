@@ -68,4 +68,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 
+	public List<Category> getAllCategories() {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Category> categories = session.createQuery("from Category")
+				.list();
+		return categories;
+	}
+
 }

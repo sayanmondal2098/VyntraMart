@@ -88,7 +88,8 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-      alert("Ready for form submission");
+      // alert("Ready for form submission");
+      this.register_user();
       console.log("Ready for form submission");
     } else {
       alert("Not ready for form submission");

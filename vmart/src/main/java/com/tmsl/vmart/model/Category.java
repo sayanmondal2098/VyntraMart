@@ -17,6 +17,7 @@ public class Category {
 	private Long catID;
 	private String catName;
 	private String sizeChart;
+	private String picUrl;
 	private Set<Product> products;
 
 	@Id
@@ -52,6 +53,14 @@ public class Category {
 
 	public void setCatName(String catName) {
 		this.catName = catName;
+	}
+
+	public String getPicUrl() {
+		return picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
 	}
 
 }

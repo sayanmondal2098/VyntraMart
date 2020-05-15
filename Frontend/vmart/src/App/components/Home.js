@@ -4,6 +4,7 @@ import "../../Assects/css/main.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import PromoImageSlider from "./PromoImageSlider";
+import Categories from "./Categories";
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Home extends React.Component {
         </Helmet>
         <Header />
         <PromoImageSlider/>
+        <Categories/>
         <Footer />
         <br />
         <br />

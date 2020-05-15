@@ -13,11 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.tmsl.vmart.config.ApplicationContextConfig;
 import com.tmsl.vmart.dao.AdminSellerDAO;
-<<<<<<< HEAD
 import com.tmsl.vmart.model.Category;
-=======
-import com.tmsl.vmart.model.AdminSeller;
->>>>>>> 105dc22d1951618d4809cbc58d4b206bccb041ca
+
 import com.tmsl.vmart.model.Product;
 import com.tmsl.vmart.model.Seller;
 
