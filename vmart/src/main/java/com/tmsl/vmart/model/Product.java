@@ -1,5 +1,7 @@
 package com.tmsl.vmart.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,16 +21,16 @@ import javax.persistence.Table;
 public class Product {
 
 	private Long pid;
-	private Set<String> picList;
+	private Set<String> picList = new HashSet<String>();
 	private String name;
 	private Category category;
 	private Double price;
 	private Discount discount;
 	private Seller seller;
-	private Set<String> specification;
+	private Set<String> specification = new HashSet<String>();
 	private String description;
 	private Long timestamp;
-	private List<Rating> ratings; // list
+	private List<Rating> ratings = new ArrayList<Rating>(); // list
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

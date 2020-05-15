@@ -1,5 +1,6 @@
 package com.tmsl.vmart.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 public class Discount {
 
 	private Long discountID;
-	private Set<Product> products;
+	private Set<Product> products = new HashSet<Product>();
 	private Double percentage;
 
 	@Id

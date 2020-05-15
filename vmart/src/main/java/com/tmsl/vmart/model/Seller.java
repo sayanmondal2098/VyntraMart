@@ -1,5 +1,6 @@
 package com.tmsl.vmart.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Seller {
 	private String phoneNo;
 	private String gpsCoordinates;
 	private Character verified;
-	private Set<Product> products;
+	private Set<Product> products = new HashSet<Product>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

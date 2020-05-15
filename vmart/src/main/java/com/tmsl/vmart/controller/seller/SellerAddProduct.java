@@ -23,8 +23,11 @@ public class SellerAddProduct {
 
 	@Autowired
 	private ProductDAO productDAO;
+	@Autowired
 	private SellerDAO sellerDAO;
+	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
 	private DiscountDAO discountDAO;
 
 
@@ -40,7 +43,7 @@ public class SellerAddProduct {
 	public ResponseEntity<String> addProductEntityByEntitySeller(@RequestParam("name") String name,
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
-			@RequestParam("percentage") double percentage) {
+			@RequestParam("percentage") Double percentage) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
 		product.setName(name);
