@@ -68,6 +68,15 @@ public class SellerDAOImpl implements SellerDAO {
 				.setParameter("param_name", name).setParameter("param_pass", password).uniqueResult();
 		return seller;
 	}
+	
+	
+	public Seller getSellerBySellerName(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Seller> seller =  session.createQuery("from Seller where name=:param_name")
+				.setParameter("param_name", name).list();
+		return seller.get(0);
+	}
 
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
@@ -75,8 +84,14 @@ public class SellerDAOImpl implements SellerDAO {
 	}
 
 	public boolean addProduct(Product product) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			session.save(product);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public boolean removeProduct(Integer pId) {
