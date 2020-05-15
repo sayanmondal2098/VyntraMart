@@ -18,12 +18,12 @@ public class Category {
 	private Long catID;
 	private String catName;
 	private String sizeChart;
-<<<<<<< HEAD
+
 	private Set<Product> products = new HashSet<Product>();
-=======
+
 	private String picUrl;
-	private Set<Product> products;
->>>>>>> 84ecf0c9c2c2ab62081da265d13063704f11b2a4
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
