@@ -57,7 +57,7 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 	
-	public Product getProductBypId(Long pId) {
+	public Product getProductBySellerName(Integer pId) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
