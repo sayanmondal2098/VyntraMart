@@ -1,5 +1,7 @@
 package com.tmsl.vmart.dao;
 
+import java.util.List;
+
 import com.tmsl.vmart.model.Category;
 
 public interface CategoryDAO {
@@ -11,5 +13,7 @@ public interface CategoryDAO {
 	public Category getCategoriesByCatName(String catName);
 	
 	public boolean removeCatagory(Category category);
+	
+	public List<Category> getAllCategories();
 
 }

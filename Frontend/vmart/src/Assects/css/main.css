@@ -175,6 +175,17 @@ div.foot_list_container{
   background-color: black;
   text-align: center;
 }
+.Categories{
+  margin: 20px;
+}
+label.blackHeadlbl{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  height: auto;
+  margin: 5px;
+}
 
 
 

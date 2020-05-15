@@ -1,0 +1,100 @@
+import React, { Component } from "react";
+import { BACKEND_URL } from "../config/Config";
+import axios from "axios";
+import renderHTML from "react-render-html";
+
+export default class Categories extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      catIDs: [],
+      catpicURLs: [],
+      promiseIsResolved:false,
+    };
+
+    this.getCategories = this.getCategories.bind(this);
+    this.catView = this.catView.bind(this);
+  }
+
+  componentDidMount(){
+    this.getCategories()
+  }
+
+  catView() {
+    var retView = '';
+    retView += (
+      '<table style="width:100%">'
+      +'<tr>');
+      for(var i=0;i<this.state.catIDs.length;i++)
+      {
+        retView+=('<td><a href={this.state.catpicURLs[0]}><img src={this.state.catpicURLs[0]}/></a></td>');  
+        if(i!==0 && i%2===0)
+            {
+                retView+=('</tr><tr>');
+            }
+      }
+        retView+=('</tr>');
+        retView+=('</table>');
+    return retView;
+  }
+
+  getCategories() {
+    if (this.state.catIDs.length === 0 && this.state.catpicURLs.length) {
+      axios
+        .get(BACKEND_URL + `/allCategory`)
+        .then((response) => {
+          this.responseController(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
+  responseController(response) {
+    if (response.status === 200) {
+      if (
+        response.data.status === "error" &&
+        response.data.message === "no_categories_found"
+      ) {
+        console.log("categories not found for the slideshow");
+      } else if (
+        response.data.status === "success" &&
+        response.data.message === "categories_found"
+      ) {
+        for (var i = 0; i < response.data.categories.length; i++) {
+          console.log(response.data.categories[i].picUrl);
+          this.setState({
+            catIDs: [...this.state.catIDs, response.data.categories[i].catid],
+            catpicURLs: [
+              ...this.state.catpicURLs,
+              response.data.categories[i].picUrl,
+            ],
+          });
+        }
+        this.setState({
+            ...this.state,
+            promiseIsResolved:true
+        });
+      }
+    }
+  }
+
+  render() {
+      if(!this.state.promiseIsResolved)
+      {
+          return null;
+      }
+      else
+      {
+        return (
+            <div className="Categories">
+              <label className="blackHeadlbl">#Shop Top Categories</label>
+              <br />
+              {renderHTML(this.catView())}
+            </div>
+          );
+      }    
+  }
+}
