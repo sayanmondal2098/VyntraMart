@@ -27,11 +27,11 @@ class Home extends React.Component {
           <title>VMart</title>
         </Helmet>
         <Header />
+        <div className="scroll_body">
         <PromoImageSlider/>
         <Categories/>
         <Footer />
-        <br />
-        <br />
+        </div>  
       </div>
     );
   }

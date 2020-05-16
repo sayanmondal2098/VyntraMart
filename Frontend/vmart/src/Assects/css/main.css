@@ -186,6 +186,18 @@ label.blackHeadlbl{
   height: auto;
   margin: 5px;
 }
+table.categoryhome_table{
+  width: 100%;
+  text-align: center;
+}
+.scroll_body{
+  position:absolute;
+    top: 50px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    overflow-y:scroll;   
+}
 
 
 
