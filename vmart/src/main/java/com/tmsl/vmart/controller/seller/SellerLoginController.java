@@ -38,10 +38,10 @@ public class SellerLoginController {
 			seller.setPassword(md5(password));
 			if (sellerDAO.saveSeller(seller)) {
 				result.put("registration_status", "successful");
-				Seller selr = sellerDAO.getSellerByLoginCredentials(name, password);
+				Seller selr = sellerDAO.getSellerByLoginCredentials(name, md5(password));
 				result.put("sid", selr.getSellerID());
 				result.put("name", selr.getName());
-				result.put("", selr.getPhoneNo());
+				result.put("phone", selr.getPhoneNo());
 			} else {
 				result.put("registration_status", "failed");
 			}

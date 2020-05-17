@@ -1,5 +1,9 @@
 package com.tmsl.vmart.controller.seller;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +47,9 @@ public class SellerAddProduct {
 	public ResponseEntity<String> addProductEntityByEntitySeller(@RequestParam("name") String name,
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
-			@RequestParam("percentage") Double percentage) {
+			@RequestParam("percentage") Double percentage,
+			@RequestParam("picList") Set<String> picList,
+			@RequestParam("specification") Set<String> specification) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
 		product.setName(name);
@@ -52,6 +58,10 @@ public class SellerAddProduct {
 		product.setCategory(categoryDAO.getCategoriesByCatName(catName));
 		product.setDescription(descreptionString);
 		product.setDiscount(discountDAO.getDiscountByValue(percentage));
+		product.setSpecification(specification);
+		product.setPicList(picList);
+//		product.setPicList(new HashSet<String>(Arrays.asList(picList.split(","))));
+//		product.setSpecification(new HashSet<String>(Arrays.asList(specification.split(","))));
 		if (productDAO.saveproduct(product)) {
 			result.put("registration_status", "successful");
 

@@ -24,12 +24,12 @@ export default class Categories extends Component {
   catView() {
     var retView = '';
     retView += (
-      '<table style="width:100%">'
+      '<table className="categoryhome_table">'
       +'<tr>');
       for(var i=0;i<this.state.catIDs.length;i++)
       {
-        retView+=('<td><a href={this.state.catpicURLs[0]}><img src={this.state.catpicURLs[0]}/></a></td>');  
-        if(i!==0 && i%2===0)
+        retView+=('<td><a href='+this.state.catpicURLs[i]+'><img src='+this.state.catpicURLs[i]+'></a></td>');  
+        if((i+1)%3===0)
             {
                 retView+=('</tr><tr>');
             }
@@ -40,7 +40,7 @@ export default class Categories extends Component {
   }
 
   getCategories() {
-    if (this.state.catIDs.length === 0 && this.state.catpicURLs.length) {
+    if (!this.state.promiseIsResolved) {
       axios
         .get(BACKEND_URL + `/allCategory`)
         .then((response) => {
@@ -91,7 +91,7 @@ export default class Categories extends Component {
         return (
             <div className="Categories">
               <label className="blackHeadlbl">#Shop Top Categories</label>
-              <br />
+              <br /><br/>
               {renderHTML(this.catView())}
             </div>
           );
