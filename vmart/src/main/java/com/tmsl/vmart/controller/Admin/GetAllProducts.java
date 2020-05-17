@@ -1,5 +1,6 @@
 package com.tmsl.vmart.controller.Admin;
 
+import java.io.Console;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -36,10 +37,15 @@ public class GetAllProducts {
 		JSONArray productList = new JSONArray();
 		for (Product p : products) {
 			JSONObject tempCust = new JSONObject();
-			tempCust.put("cid", p.getPid());
+			tempCust.put("pid", p.getPid());
 			tempCust.put("name", p.getName());
+			tempCust.put("category", p.getCategory());
+//			tempCust.put("discount", p.getDiscount().getPercentage());
+			tempCust.put("seller", p.getSeller().getSellerID());
 			tempCust.put("getDescription", p.getDescription());
 			tempCust.put("price", p.getPrice());
+			tempCust.put("specifications", p.getSpecification().toString());
+			System.out.println(p.getSpecification().toString());
 			productList.put(tempCust);
 		}
 		result.put("products", productList);

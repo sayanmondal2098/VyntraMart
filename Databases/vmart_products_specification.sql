@@ -35,6 +35,7 @@ CREATE TABLE `products_specification` (
 
 LOCK TABLES `products_specification` WRITE;
 /*!40000 ALTER TABLE `products_specification` DISABLE KEYS */;
+INSERT INTO `products_specification` VALUES (21,'Fabric: Cotton'),(21,'Fit: Regular Fit'),(21,'Length: Regular'),(21,'Main Trend: Typography or Slogan Prints'),(21,'Multipack Set: Single'),(21,'Neck: Round Neck'),(21,'Occasion: Casual'),(21,'Wash Care: Machine Wash');
 /*!40000 ALTER TABLE `products_specification` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-17  9:43:53
+-- Dump completed on 2020-05-17 11:36:59
