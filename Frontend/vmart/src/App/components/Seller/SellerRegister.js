@@ -1,28 +1,29 @@
 // import React, { Component } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
-import axios  from "axios";
+import { axios } from "axios";
 import { Redirect } from "react-router-dom";
-import { BACKEND_URL, makeid } from "../config/Config";
-import "../../Assects/css/main.css";
-import logo from "../../Assects//img//vmart-logo.png";
+import { BACKEND_URL,makeid } from "../../config/Config";
+import "../../../Assects/css/main.css";
+import logo from "../../../Assects//img//vmart-logo.png";
 
 
 
-class Signup extends React.Component {
+class SellerRegister extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("session_token");
-    let loggedIn = true;
-    if (sess_token == null) {
-      loggedIn = false;
+    const sess_token=localStorage.getItem("session_token");
+    let loggedIn=true;
+    if(sess_token==null)
+    {
+      loggedIn=false;
     }
     this.state = {
       name: "",
-      email: "",
+      phonenumber: "",
       password: "",
       repassword: "",
-      loggedIn
+      loggedIn         
     };
   }
 
@@ -32,10 +33,10 @@ class Signup extends React.Component {
       this.errormsg("err_name", "Enter name");
       flag = false;
     }
-    if (this.state.email === "") {
-      this.errormsg("err_email", "Enter email");
-      flag = false;
-    }
+    if (this.state.phonenumber === "") {
+        this.errormsg("err_phonenumber", "Enter Phone Number");
+        flag = false;
+      }
     if (this.state.password === "") {
       this.errormsg("err_password", "Enter password");
       flag = false;
@@ -66,9 +67,9 @@ class Signup extends React.Component {
     });
   };
 
-  handleEmailChange = (event) => {
+  handlePhoneNoChange = (event) => {
     this.setState({
-      email: event.target.value,
+      phonenumber: event.target.value,
     });
   };
 
@@ -87,7 +88,7 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-      // alert("Ready for form submission");
+      alert("Ready for form submission");
       this.register_user();
       console.log("Ready for form submission");
     } else {
@@ -95,14 +96,12 @@ class Signup extends React.Component {
     }
   };
 
-
   register_user() {
 
-    axios
-    .post(
-      BACKEND_URL +
-      `/register?name=${this.state.name}&email=${this.state.email}&password=${this.state.password}`
-    )
+    axios.post(
+        BACKEND_URL +
+          `/register?name=${this.state.name}&password=${this.state.password}`
+      )
       .then((response) => {
         this.responseController(response);
       })
@@ -114,25 +113,26 @@ class Signup extends React.Component {
   responseController(response) {
     if (response.status === 200) {
       if (response.data.existence_check === "found") {
-        this.errormsg("err_email", "Email already in use");
+        this.errormsg("err_sellerName", "Seller already in use");
       } else {
         if (response.data.registration_status === "successful") {
-          localStorage.setItem("session_token", makeid(15));
-          localStorage.setItem("uid", response.data.uid);
-          localStorage.setItem("name", response.data.name);
+          localStorage.setItem("session_token",makeid(15));
+          localStorage.setItem("sid",response.data.sid);
+          localStorage.setItem("name",response.data.name);
           this.setState({
-            loggedIn: true
+            loggedIn:true
           })
         } else {
-          alert("User not registered");
+          alert("Seller not registered");
         }
       }
     }
   }
 
   render() {
-    if (this.state.loggedIn) {
-      return <Redirect to="/" />
+    if(this.state.loggedIn)
+    {
+      return <Redirect to="/"/>
     }
     return (
       <div className="Signup">
@@ -147,7 +147,7 @@ class Signup extends React.Component {
           <br />
           <form onSubmit={this.handleSubmit}>
             <label className="form">
-              <b>Your name</b>
+              <b>Seller User name</b>
             </label>
             <br />
             <input
@@ -164,21 +164,21 @@ class Signup extends React.Component {
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
-              <b>Email</b>
+              <b>Phone No</b>
             </label>
             <br />
             <input
               className="form_ed"
-              type="email"
+              type="phone no"
               onKeyDown={this.txt_tracker}
-              maxLength="64"
-              name="email"
-              id="email"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
+              maxLength="1024"
+              name="phonenumber"
+              id="phonenumber"
+              value={this.state.phonenumber}
+              onChange={this.handlePhoneNoChange}
             />
             <br />
-            <label className="form_error" id="err_email"></label>
+            <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
               <b>Password</b>
@@ -220,8 +220,8 @@ class Signup extends React.Component {
           <br />
           <br />
           <label className="form">
-            Already have an account?{" "}
-            <a className="emphasis_link" href="login">
+            Already have a Seller account?{" "}
+            <a className="emphasis_link" href="sellerLogin">
               Sign in
             </a>
           </label>
@@ -231,4 +231,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default SellerRegister;
