@@ -35,7 +35,7 @@ CREATE TABLE `products_piclist` (
 
 LOCK TABLES `products_piclist` WRITE;
 /*!40000 ALTER TABLE `products_piclist` DISABLE KEYS */;
-INSERT INTO `products_piclist` VALUES (21,'https://assets.myntassets.com/h_1440'),(21,'q_90'),(21,'w_1080/v1/assets/images/1700944/2019/6/8/c3d336e4-8c86-4434-94b2-c9b28b6dd6471559989322777-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--2.jpg'),(21,'w_1080/v1/assets/images/1700944/2019/6/8/20153ade-f325-4613-a851-f79f8dc00c571559989322759-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--3.jpg'),(21,'w_1080/v1/assets/images/1700944/2019/6/8/67f8fc06-3131-4ae9-a869-2b485f0aca3c1559989322742-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--4.jpg'),(21,'w_1080/v1/assets/images/1700944/2019/6/8/ec064f55-1640-4bdb-92f2-b1b22cb190391559989322722-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--5.jpg');
+INSERT INTO `products_piclist` VALUES (22,'https://assets.myntassets.com/h_1440/v1/assets/images/1700944/2019/6/8/c3d336e4-8c86-4434-94b2-c9b28b6dd6471559989322777-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--2.jpg'),(22,'https://assets.myntassets.com/h_1440/v1/assets/images/1700944/2019/6/8/20153ade-f325-4613-a851-f79f8dc00c571559989322759-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--3.jpg'),(22,'https://assets.myntassets.com/h_1440/v1/assets/images/1700944/2019/6/8/67f8fc06-3131-4ae9-a869-2b485f0aca3c1559989322742-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--4.jpg'),(22,'https://assets.myntassets.com/h_1440/v1/assets/images/1700944/2019/6/8/ec064f55-1640-4bdb-92f2-b1b22cb190391559989322722-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--5.jpg'),(23,'https://assets.myntassets.com/v1/assets/images/8972451/2019/3/28/9b6514c7-486e-4151-bbde-62bceca62e111553772641530-Kook-N-Keech-Marvel-Men-Black-Marvel-Printed-Round-Neck-T-sh-1.jpg'),(23,'https://assets.myntassets.com/v1/assets/images/8972451/2019/3/28/0ab21b52-08e6-41bf-8b3b-f8e6325762661553772641495-Kook-N-Keech-Marvel-Men-Black-Marvel-Printed-Round-Neck-T-sh-3.jpg'),(23,'https://assets.myntassets.com/v1/assets/images/8972451/2019/3/28/61dd7e68-18b1-4d54-a608-bed7604e939d1553772641473-Kook-N-Keech-Marvel-Men-Black-Marvel-Printed-Round-Neck-T-sh-4.jpg'),(23,'https://assets.myntassets.com/v1/assets/images/8972451/2019/3/28/18a90f0e-afae-4535-8c42-6f6ca1e85ac11553772641457-Kook-N-Keech-Marvel-Men-Black-Marvel-Printed-Round-Neck-T-sh-5.jpg');
 /*!40000 ALTER TABLE `products_piclist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-17 11:36:59
+-- Dump completed on 2020-05-18 21:02:52

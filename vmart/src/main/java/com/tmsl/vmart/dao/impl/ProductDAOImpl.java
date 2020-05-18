@@ -66,6 +66,15 @@ public class ProductDAOImpl implements ProductDAO {
 		return pList.get(0);
 	}
 
+	public List<Product> getProductsByCategory(String catID) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session.createQuery("from products where catid=:param_catID")
+			.setParameter("param_catID", catID)
+			.list();
+		return pList;
+	}
+
 
 
 }

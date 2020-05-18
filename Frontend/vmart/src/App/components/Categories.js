@@ -28,7 +28,7 @@ export default class Categories extends Component {
       +'<tr>');
       for(var i=0;i<this.state.catIDs.length;i++)
       {
-        retView+=('<td><a href='+this.state.catpicURLs[i]+'><img src='+this.state.catpicURLs[i]+'></a></td>');  
+        retView+=('<td><a href=/products/'+this.state.catIDs[i]+'><img src='+this.state.catpicURLs[i]+'></a></td>');  
         if((i+1)%3===0)
             {
                 retView+=('</tr><tr>');
@@ -58,7 +58,7 @@ export default class Categories extends Component {
         response.data.status === "error" &&
         response.data.message === "no_categories_found"
       ) {
-        console.log("categories not found for the slideshow");
+        console.log("categories not found");
       } else if (
         response.data.status === "success" &&
         response.data.message === "categories_found"
