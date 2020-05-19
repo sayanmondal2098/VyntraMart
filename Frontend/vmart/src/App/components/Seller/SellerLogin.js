@@ -86,7 +86,7 @@ class SellerLogin extends React.Component {
       } else {
         if (response.data.login_status === "successful") {
           localStorage.setItem("session_token",makeid(15));
-          localStorage.setItem("sid",response.data.uid);
+          localStorage.setItem("sid",response.data.sid);
           localStorage.setItem("sname",response.data.name);
           this.setState({
             loggedIn:true
@@ -102,7 +102,7 @@ class SellerLogin extends React.Component {
   render() {
     if(this.state.loggedIn)
     {
-      return <Redirect to="/"/>
+      return <Redirect to="/SellerDashBoard"/>
     }
     return (
       <div className="Login">
