@@ -17,25 +17,26 @@ import com.tmsl.vmart.model.Seller;
 
 @CrossOrigin
 @Controller
-public class SellerLoginController {
+public class SellerRegisterController {
 
 	@Autowired
 	private SellerDAO sellerDAO;
 
-	public SellerLoginController(SellerDAO sellerDAO) {
+	public SellerRegisterController(SellerDAO sellerDAO) {
 		super();
 		this.sellerDAO = sellerDAO;
 	}
 
 	@RequestMapping(value = "/sellerRegister", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestParam("name") String name,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password,@RequestParam("phonenumber") String phonenumber ) {
 		JSONObject result = new JSONObject();
 		if (!sellerDAO.isExistingSeller(name)) {
 			result.put("existence_check", "not_found");
 			Seller seller = new Seller();
 			seller.setName(name);
 			seller.setPassword(md5(password));
+			seller.setPhoneNo(phonenumber);
 			if (sellerDAO.saveSeller(seller)) {
 				result.put("registration_status", "successful");
 				Seller selr = sellerDAO.getSellerByLoginCredentials(name, md5(password));
@@ -50,5 +51,5 @@ public class SellerLoginController {
 		}
 		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
-
+	
 }
