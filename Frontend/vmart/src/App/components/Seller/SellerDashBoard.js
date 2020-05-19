@@ -8,7 +8,9 @@ import 'react-table-6/react-table.css';
 
 
 import "../../../Assects/css/DashBoaed.css";
-import { BACKEND_URL } from "../../config/Config";
+import {BACKEND_URL, makeid} from "../../config/Config";
+import DashBoardHeader from "./DashBoardHeader";
+
 
 class SellerDashBoard extends React.Component {
   constructor(props) {
@@ -55,6 +57,7 @@ class SellerDashBoard extends React.Component {
           }
   ]  
     return (
+      
       <div className="root  ">
         <Grid container spacing={5}>
           <Grid item xs={"auto"}>
