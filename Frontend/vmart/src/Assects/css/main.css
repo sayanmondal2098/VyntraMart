@@ -230,10 +230,11 @@ table.categoryhome_table{
     overflow-y:scroll;   
 }
 .ProductCard{
-  margin: 20px;
+  margin: 10px;
+  padding: 5px;
 }
 img.card{
-  width: 15%;
+  width: 80%;
 }
 
 
