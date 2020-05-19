@@ -35,7 +35,7 @@ CREATE TABLE `products_specification` (
 
 LOCK TABLES `products_specification` WRITE;
 /*!40000 ALTER TABLE `products_specification` DISABLE KEYS */;
-INSERT INTO `products_specification` VALUES (22,'Fabric: Cotton'),(22,'Fit: Regular Fit'),(22,'Length: Regular'),(22,'Main Trend: Typography or Slogan Prints'),(22,'Multipack Set: Single'),(22,'Neck: Round Neck'),(22,'Occasion: Casual'),(22,'Wash Care: Machine Wash'),(23,'Character: Avengers'),(23,'Fabric: Cotton'),(23,'Fit: Regular Fit'),(23,'Length: Regular'),(23,'Neck: Round Neck'),(23,'Occasion: Casual');
+INSERT INTO `products_specification` VALUES (22,'Fabric: Cotton'),(22,'Fit: Regular Fit'),(22,'Length: Regular'),(22,'Main Trend: Typography or Slogan Prints'),(22,'Multipack Set: Single'),(22,'Neck: Round Neck'),(22,'Occasion: Casual'),(22,'Wash Care: Machine Wash'),(23,'Character: Avengers'),(23,'Fabric: Cotton'),(23,'Fit: Regular Fit'),(23,'Length: Regular'),(23,'Neck: Round Neck'),(23,'Occasion: Casual'),(24,'Fabric: Cotton'),(24,'Fit: Regular Fit'),(24,'Neck: Round Neck'),(24,'Occasion: Casual'),(24,'Wash Care: Machine Wash'),(26,'Fabric: Polyester'),(26,'Fit: Regular Fit'),(26,'Neck: Round Neck'),(26,'Occasion: Casual'),(26,'Wash Care: Machine Wash'),(26,'Pattern: Striped'),(27,'Fabric: Cotton'),(27,'Main Trend: Micro or Ditsy Print'),(27,'Occasion: Casual'),(27,'Neck: Polo Collar'),(27,'Fit: Regular Fit'),(27,'Pattern Coverage: All-Over');
 /*!40000 ALTER TABLE `products_specification` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-18 21:02:52
+-- Dump completed on 2020-05-19 13:47:51
