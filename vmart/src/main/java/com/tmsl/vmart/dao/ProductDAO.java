@@ -9,6 +9,8 @@ public interface ProductDAO {
 	public boolean saveproduct(Product product);
 
 	public List<Product> getAllProducts();
+	
+	public List<Product> getProductsByCategory(String catID);
 
 	public boolean isExistingProduct(Long pId);
 

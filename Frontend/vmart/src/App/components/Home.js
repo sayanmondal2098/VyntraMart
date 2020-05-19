@@ -1,38 +1,30 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "../../Assects/css/main.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import PromoImageSlider from "./PromoImageSlider";
-import Categories from "./Categories";
+import ProductsCategory from "./ProductsCategory";
+import HomeView from "./HomeView";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    const sess_token = localStorage.getItem("session_token");
-    let loggedIn = true;
-    if (sess_token == null) {
-      loggedIn = false;
-    }
-    this.state = {
-      customerName: localStorage.getItem("name"),
-      loggedIn,
-    };
-  }
 
   render() {
     return (
-      <div className="Home">
+      <BrowserRouter>
+      <Header />
+        <div className="Home">
         <Helmet>
           <title>VMart</title>
         </Helmet>
-        <Header />
-        <div className="scroll_body">
-        <PromoImageSlider/>
-        <Categories/>
-        <Footer />
-        </div>  
-      </div>
+          <Switch>
+            <Route path="/products/:catID/:catName" component={ProductsCategory} />
+            <Route path="/" component={HomeView} />
+          </Switch>
+
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

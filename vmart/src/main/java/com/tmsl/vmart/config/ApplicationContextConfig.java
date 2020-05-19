@@ -48,6 +48,7 @@ public class ApplicationContextConfig {
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.enable_lazy_load_no_trans", "true");
 		return properties;
 	}
 	
