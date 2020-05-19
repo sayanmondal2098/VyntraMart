@@ -1,9 +1,9 @@
 // import React, { Component } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
-import axios  from "axios";
+import { axios } from "axios";
 import { Redirect } from "react-router-dom";
-import { BACKEND_URL, makeid } from "../config/Config";
+import { BACKEND_URL,makeid } from "../config/Config";
 import "../../Assects/css/main.css";
 import logo from "../../Assects//img//vmart-logo.png";
 
@@ -12,17 +12,18 @@ import logo from "../../Assects//img//vmart-logo.png";
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("session_token");
-    let loggedIn = true;
-    if (sess_token == null) {
-      loggedIn = false;
+    const sess_token=localStorage.getItem("session_token");
+    let loggedIn=true;
+    if(sess_token==null)
+    {
+      loggedIn=false;
     }
     this.state = {
       name: "",
       email: "",
       password: "",
       repassword: "",
-      loggedIn
+      loggedIn         
     };
   }
 
@@ -95,14 +96,12 @@ class Signup extends React.Component {
     }
   };
 
-
   register_user() {
-
     axios
-    .post(
-      BACKEND_URL +
-      `/register?name=${this.state.name}&email=${this.state.email}&password=${this.state.password}`
-    )
+      .post(
+        BACKEND_URL +
+          `/register?name=${this.state.name}&email=${this.state.email}&password=${this.state.password}`
+      )
       .then((response) => {
         this.responseController(response);
       })
@@ -117,11 +116,11 @@ class Signup extends React.Component {
         this.errormsg("err_email", "Email already in use");
       } else {
         if (response.data.registration_status === "successful") {
-          localStorage.setItem("session_token", makeid(15));
-          localStorage.setItem("uid", response.data.uid);
-          localStorage.setItem("name", response.data.name);
+          localStorage.setItem("session_token",makeid(15));
+          localStorage.setItem("uid",response.data.uid);
+          localStorage.setItem("name",response.data.name);
           this.setState({
-            loggedIn: true
+            loggedIn:true
           })
         } else {
           alert("User not registered");
@@ -131,13 +130,14 @@ class Signup extends React.Component {
   }
 
   render() {
-    if (this.state.loggedIn) {
-      return <Redirect to="/" />
+    if(this.state.loggedIn)
+    {
+      return <Redirect to="/"/>
     }
     return (
       <div className="Signup">
         <Helmet>
-          <title>VMart Seller Registration</title>
+          <title>VMart Registration</title>
         </Helmet>
         <div className="head">
           <img className="head_logo" src={logo} alt="Logo" />

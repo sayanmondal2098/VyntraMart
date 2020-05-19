@@ -57,9 +57,9 @@ class Header extends React.Component {
   }
 
   render() {
-    let login, signout;
+    let button, signout;
     if (!this.state.loggedIn) {
-      login = (
+      button = (
         <a href="/login">
           <button className="btn_login" type="button">
             Login
@@ -68,7 +68,7 @@ class Header extends React.Component {
       );
       signout = null;
     } else {
-      login = (
+      button = (
         <label
           className="tab"
           onMouseOver={this.handleAccountHover}
@@ -102,15 +102,10 @@ class Header extends React.Component {
           />
         </form>
         <div className="head_tab" id="seller">
-          {login}
+          {button}
           <label className="tab">
-            <div>
-              <a href="sellerLogin">
-                <img className="inline" src={briefcase} alt="sellIcon" />
+            <img className="inline" src={briefcase} alt="sellIcon" />
             Sell on VMart
-             </a>
-
-            </div>
           </label>
         </div>
         <div className="head_tab" id="cart">
