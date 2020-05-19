@@ -18,7 +18,7 @@ class Home extends React.Component {
           <title>VMart</title>
         </Helmet>
           <Switch>
-            <Route path="/products/:catID" component={ProductsCategory} />
+            <Route path="/products/:catID/:catName" component={ProductsCategory} />
             <Route path="/" component={HomeView} />
           </Switch>
 

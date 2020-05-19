@@ -46,7 +46,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (22,'Keep this hip this season with the HRX Men\'s Athleisure T-shirt. This versatile T-shirt can be styled any way you like for the ultimate gym-to-street look.','HRX by Hrithik Roshan',699,NULL,8,1097,15,NULL),(23,'Keep it cool and casual this season with this high-quality Kook N Keech Marvel tee. When you\'re out running errands, you\'ll look your best when you combine this black piece with your favourite pair of sunglasses and trainer shoes.','Kook N Keech Marvel',599,NULL,8,1098,15,NULL);
+INSERT INTO `products` VALUES (22,'Keep this hip this season with the HRX Men\'s Athleisure T-shirt. This versatile T-shirt can be styled any way you like for the ultimate gym-to-street look.','HRX by Hrithik Roshan',699,NULL,8,1097,15,NULL),(23,'Keep it cool and casual this season with this high-quality Kook N Keech Marvel tee. When you\'re out running errands, you\'ll look your best when you combine this black piece with your favourite pair of sunglasses and trainer shoes.','Kook N Keech Marvel',599,NULL,8,1098,15,NULL),(24,'The feel of this Difference of Opinion tee is absolutely amazing thanks to the designer\'s use of cotton. When you\'re going for a stroll in the park, put this sea green piece with a pair of chinos and sneakers to feel both comfortable and stylish outside.','Difference of Opinion',1249,NULL,8,1099,15,NULL),(26,'Elevate the look of your wardrobe with a few more basic tees like this. You\'ll feel entirely at ease in this grey melange piece on top of a relaxed-fit chino and slip-on tennis shoe when you\'re going out shopping or catching a movie.','Sztori',999,NULL,8,1098,15,NULL),(27,'WROGN brings to you a range of trendy T-shirts to spruce up your wardrobe. Team this piece with a pair of jeans and sneakers for cool, casual look.','WROGN',999,NULL,8,1098,15,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-18 21:02:54
+-- Dump completed on 2020-05-19 13:47:53

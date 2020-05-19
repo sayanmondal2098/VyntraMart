@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { BACKEND_URL } from "../config/Config";
 import axios from "axios";
+import renderHTML from "react-render-html";
 import ProductCard from "./ProductCard";
+import ReactDOMServer from 'react-dom/server';
 
 export default class ProductsCategory extends Component {
   constructor(props) {
@@ -9,9 +11,16 @@ export default class ProductsCategory extends Component {
 
     this.state = {
       catID: this.props.match.params.catID,
+      catName:decodeURI(this.props.match.params.catName),
+      prodID: [],
+      images: [],
+      names: [],
+      discounts: [],
+      prices: [],
       promiseIsResolved: false,
     };
     this.getProducts = this.getProducts.bind(this);
+    this.prodView = this.prodView.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +40,26 @@ export default class ProductsCategory extends Component {
     }
   }
 
+  prodView(){
+    var retView = '';
+    retView += (
+      '<table className="categoryhome_table">'
+      +'<tr>');
+      for(var i=0;i<this.state.prodID.length;i++)
+      {
+        retView+='<td>';
+        retView+=ReactDOMServer.renderToString(<ProductCard pid={this.state.prodID[i]} image={this.state.images[i]} name={this.state.names[i]} discount={this.state.discounts[i]} price={this.state.prices[i]}/>);
+        retView+='</td>';  
+        if((i+1)%5===0)
+            {
+                retView+=('</tr><tr>');
+            }
+      }
+        retView+=('</tr>');
+        retView+=('</table>');
+    return retView;
+  }
+
   responseController(response) {
     if (response.status === 200) {
       if (
@@ -44,6 +73,20 @@ export default class ProductsCategory extends Component {
       ) {
         for (var i = 0; i < response.data.products.length; i++) {
           console.log(response.data.products[i]);
+          var urls = [];
+          for (var k = 0; k < response.data.products[i].pictures.length; k++) {
+            urls[k] = response.data.products[i].pictures[k].url;
+          }
+          this.setState({
+            images: [...this.state.images, urls],
+            names: [...this.state.names, response.data.products[i].name],
+            discounts: [
+              ...this.state.discounts,
+              response.data.products[i].discount,
+            ],
+            prices: [...this.state.prices, response.data.products[i].price],
+            prodID: [...this.state.prodID, response.data.products[i].pid],
+          });
         }
         this.setState({
           ...this.state,
@@ -59,12 +102,9 @@ export default class ProductsCategory extends Component {
     } else {
       return (
         <div className="ProductsCategory">
-          <ProductCard
-            image="https://assets.myntassets.com/h_1440/v1/assets/images/1700944/2019/6/8/ec064f55-1640-4bdb-92f2-b1b22cb190391559989322722-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--5.jpg"
-            name="HRX by Hrithik Roshan"
-            price="699"
-            discount="0.8"
-          />
+          <label className="blackHeadlbl">{this.state.catName}</label>
+              <br /><br/>
+          {renderHTML(this.prodView())}
         </div>
       );
     }

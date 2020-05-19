@@ -6,6 +6,7 @@ export default class ProductCard extends Component {
         super(props)
     
         this.state = {
+            prodID:this.props.pid,
              image:this.props.image,
              name:this.props.name,
              sellPrice:Math.round(this.props.discount*this.props.price),
@@ -17,7 +18,7 @@ export default class ProductCard extends Component {
     render() {
         return (
             <div className="ProductCard">
-                <img className="card" src={this.state.image} alt={this.state.name}/>
+                <img className="card" src={this.state.image[0]} alt={this.state.name}/>
                 <br/>
                 <label className="boldtextH1">{this.state.name}</label>                
                 <br/>
