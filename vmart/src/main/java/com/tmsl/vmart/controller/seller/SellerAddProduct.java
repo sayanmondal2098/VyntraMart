@@ -48,7 +48,6 @@ public class SellerAddProduct {
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
 			@RequestParam("percentage") Double percentage,
-			@RequestParam("picList") Set<String> picList,
 			@RequestParam("specification") Set<String> specification) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
@@ -59,7 +58,6 @@ public class SellerAddProduct {
 		product.setDescription(descreptionString);
 		product.setDiscount(discountDAO.getDiscountByValue(percentage));
 		product.setSpecification(specification);
-		product.setPicList(picList);
 //		product.setPicList(new HashSet<String>(Arrays.asList(picList.split(","))));
 //		product.setSpecification(new HashSet<String>(Arrays.asList(specification.split(","))));
 		if (productDAO.saveproduct(product)) {
