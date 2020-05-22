@@ -1,7 +1,5 @@
 package com.tmsl.vmart.controller.seller;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.json.JSONObject;
@@ -20,7 +18,6 @@ import com.tmsl.vmart.dao.ProductDAO;
 import com.tmsl.vmart.dao.SellerDAO;
 import com.tmsl.vmart.model.Product;
 
-
 @CrossOrigin
 @Controller
 public class SellerAddProduct {
@@ -34,8 +31,8 @@ public class SellerAddProduct {
 	@Autowired
 	private DiscountDAO discountDAO;
 
-
-	public SellerAddProduct(ProductDAO productDAO, SellerDAO sellerDAO,CategoryDAO categoryDAO,DiscountDAO discountDAO) {
+	public SellerAddProduct(ProductDAO productDAO, SellerDAO sellerDAO, CategoryDAO categoryDAO,
+			DiscountDAO discountDAO) {
 		super();
 		this.productDAO = productDAO;
 		this.sellerDAO = sellerDAO;
@@ -47,8 +44,7 @@ public class SellerAddProduct {
 	public ResponseEntity<String> addProductEntityByEntitySeller(@RequestParam("name") String name,
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
-			@RequestParam("percentage") Double percentage,
-			@RequestParam("specification") Set<String> specification) {
+			@RequestParam("percentage") Double percentage, @RequestParam("specification") Set<String> specification) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
 		product.setName(name);

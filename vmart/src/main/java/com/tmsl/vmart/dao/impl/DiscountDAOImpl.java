@@ -46,4 +46,12 @@ public class DiscountDAOImpl implements DiscountDAO {
 		return categorie.get(0);
 	}
 
+	public List<Discount> getAllDiscount() {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Discount> discount = session.createQuery("from Discount")
+				.list();
+		return discount;
+	}
+
 }
