@@ -18,7 +18,7 @@ import { BACKEND_URL } from "../../config/Config";
 class SellerDashBoard extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("session_token");
+    const sess_token = localStorage.getItem("sname");
     let loggedIn = true;
     if (sess_token == null) {
       loggedIn = false;
@@ -67,7 +67,7 @@ class SellerDashBoard extends React.Component {
             <Typography variant="h6">Seller Dashboard</Typography>
             <div className="menubar-buttons right-align">
               <Grid container alignContent={"center"} spacing={15}>
-                <Button variant="contained" color="primary" href="#">
+                <Button variant="contained" color="primary" href="/SellerAddProduct">
                   Add Products
               </Button>
                 <Button variant="contained" color="secondary" >

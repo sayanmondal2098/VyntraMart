@@ -9,16 +9,16 @@ import { Redirect } from "react-router-dom";
 class SellerLogin extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token=localStorage.getItem("session_token");
-    let loggedIn=true;
+    const sess_token=localStorage.getItem("sname");
+    let SellerloggedIn=true;
     if(sess_token==null)
     {
-      loggedIn=false;
+      SellerloggedIn=false;
     }
     this.state = {
       name: "",
       password: "",
-      loggedIn
+      SellerloggedIn
     };
   }
 
@@ -100,7 +100,7 @@ class SellerLogin extends React.Component {
   }
 
   render() {
-    if(this.state.loggedIn)
+    if(this.state.SellerloggedIn)
     {
       return <Redirect to="/SellerDashBoard"/>
     }

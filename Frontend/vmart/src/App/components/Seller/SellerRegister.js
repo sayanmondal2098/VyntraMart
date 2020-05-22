@@ -1,7 +1,7 @@
 // import React, { Component } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
-import { axios } from "axios";
+import axios  from "axios";
 import { Redirect } from "react-router-dom";
 import { BACKEND_URL,makeid } from "../../config/Config";
 import "../../../Assects/css/main.css";
@@ -88,7 +88,6 @@ class SellerRegister extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validation()) {
-      alert("Ready for form submission");
       this.register_user();
       console.log("Ready for form submission");
     } else {
@@ -100,7 +99,7 @@ class SellerRegister extends React.Component {
 
     axios.post(
         BACKEND_URL +
-          `/register?name=${this.state.name}&password=${this.state.password}`
+          `/sellerRegister?name=${this.state.name}&password=${this.state.password}&phonenumber=${this.state.phonenumber}`
       )
       .then((response) => {
         this.responseController(response);
