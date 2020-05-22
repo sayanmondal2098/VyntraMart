@@ -8,6 +8,7 @@ import Home from "./App/components/Home";
 import SellerLogin from "./App/components/Seller/SellerLogin";
 import SellerRegister from "./App/components/Seller/SellerRegister";
 import SellerDashBoard from "./App/components/Seller/SellerDashBoard";
+import SellerAddProduct from "./App/components/Seller/SellerAddProduct";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path="/sellerLogin" component={SellerLogin} />
             <Route path="/sellerRegister" component={SellerRegister}/>
             <Route path="/SellerDashBoard" component={SellerDashBoard} />
+            <Route path="/SellerAddProduct" component={SellerAddProduct} />
 
             <Route path="/" component={Home} />
 
