@@ -1,15 +1,20 @@
 import React from "react";
+
 import { Helmet } from "react-helmet";
 import logo from "../..//..//Assects//img//vmart-logo.png";
 import { BACKEND_URL } from "../../config/Config";
-
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import axios from "axios";
+import { Redirect } from "react-router-dom";
+
 
 
 class SellerAddProduct extends React.Component {
   constructor(props) {
     super(props);
     const sess_token = localStorage.getItem("session_token");
+    // let catName = []
     let loggedIn = true;
     if (sess_token == null) {
       loggedIn = false;
@@ -19,11 +24,14 @@ class SellerAddProduct extends React.Component {
       price : "",
       sellername: localStorage.getItem("sname"),
       descreption:"",
-      catName:[],
+      catName: [],
+      categories:"",
+      discount:[],
       percentage:"",
       specefecation: "",
       loggedIn
     };
+    // this.catRender = this.catRender.bind(this);
 
   }
 
@@ -46,11 +54,11 @@ class SellerAddProduct extends React.Component {
     });
   };
 
-  // handleProductcatNameChange = (event) => {
-  //   this.setState({
-  //     catName: event.target.value,
-  //   });
-  // };
+  handleCategoryChange = (event) => {
+    this.setState({
+      percentage: event.target.value,
+    });
+  };
 
   handleProductpercentageChange = (event) => {
     this.setState({
@@ -65,56 +73,79 @@ class SellerAddProduct extends React.Component {
   };
 
 
-  componentDidMount(){
-    this.setState({
-      catName: this.getallcategory()
-    })
-    // this.getallcategory();
-    console.log(this.state.catName)
-  }
 
   getallcategory(){
-    let list = []
+    const list = []
     axios.get(BACKEND_URL+ `/allCategory`)
     .then((res)=> {
       var cat = res['data']['categories']
       var catlen = cat.length
-      console.log(catlen)
-    console.log(res)
     for (let index = 0; index < catlen; index++) {
       const element = cat[index]["catName"];
       list.push(element)
+      this.state.catName.push(element)
     }
-      console.log( list)
       return list
-    },console.log(list),
-    this.setState({
-      catName: [...this.state.catName,list],
-  }),console.log(this.state.catName)
+    }
     )
     .catch((e)=>{
       console.log(e)
     })
 }
 
+getalldiscount(){
+  const list = []
+  axios.get(BACKEND_URL+ `/all_discounts`)
+  .then((res)=> {
+    console.log(res)
+    var dis = res['data']['discounts']
+    var dislen = dis.length
+  for (let index = 0; index < dislen; index++) {
+    const element = dis[index]["discount getPercentage"];
+    list.push(element)
+    this.state.discount.push(element)
+  }
+    return list
+  }
+  )
+  .catch((e)=>{
+    console.log(e)
+  })
+}
+
+// catRender(){
+//   var catView = '';
+//   catView += (
+//     '<select>');
+//     for (let index = 0; index < this.state.catName.length; index++) {
+//       console.log(index)
+//       catView += '<option value='+this.state.catName[index]+'>'+this.state.catName[index]+'</option> </br>'
+//     }
+//     catView += ('</select>')
+//     return catView;
+// }
+
+
+componentDidMount(){
+  this.getalldiscount()
+  this.getallcategory()
+  console.log(this.state.catName)
+}
+
 
   addProduct(){
     axios
       .post(BACKEND_URL + `/SellerAddProduct?name=${this.state.name}&price=${this.state.price}&sellername=${this.state.sellername}`+
-                  `&descreption=${this.state.descreption}&catName=${this.state.catName}&percentage=${this.state.percentage}&specification=${this.state.specefecation}`)
+                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.percentage}&specification=${this.state.specefecation}`)
   }
 
 
   handleSubmit(e) {
-    console.log(this.state.name)
     this.addProduct()
+    return <Redirect to="/SellerDashBoard"/>
   }
 
   render(){
-    // let catlists = 
-    // const catName = this.state.catName.map(function(catname, i) {
-    //   return <li key={i}>{catname.catName}</li>
-    // });
 
     return(
       <div className="Login">
@@ -182,7 +213,7 @@ class SellerAddProduct extends React.Component {
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
-              <b>Catarory Name (Modify It TO DROP DOWN )</b>
+              <b>Catarory Name </b>
             </label>
             <br />
             {/* <input
@@ -195,28 +226,18 @@ class SellerAddProduct extends React.Component {
               value={this.state.catName}
               onChange={this.handleProductcatNameChange}
             /> */}
+            <Dropdown options={this.state.catName} onChange={(values)=>this.setState({categories:values})} placeholder="Select an option" value={this.state.categories}/>
+
             
-            <select>
-                {/* {catName} */}
-            </select>
             <br />
             <br />
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
-              <b>percentage (Modify )</b>
+              <b>percentage (Modify It TO DROP DOWN )</b>
             </label>
             <br />
-            <input
-              className="form_ed"
-              type="name"
-              onKeyDown={this.txt_tracker}
-              maxLength="1024"
-              name="password"
-              id="password"
-              value={this.state.percentage}
-              onChange={this.handlePasswordChange}
-            />
+            <Dropdown options={this.state.discount} onChange={(values)=>this.setState({percentage:values})} placeholder="Select an discount" value={this.state.percentage}/>
             <br />
             <br />
             <label className="form_error" id="err_name"></label>
@@ -227,11 +248,10 @@ class SellerAddProduct extends React.Component {
             <br />
             <input
               className="form_ed"
-              type="password"
+              type="test"
               onKeyDown={this.txt_tracker}
               maxLength="1024"
-              name="password"
-              id="password"
+              name="Specefication"
               value={this.state.specefecation}
               onChange={this.handleProductspecefecationChange}
             />
