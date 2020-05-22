@@ -104,7 +104,8 @@ getalldiscount(){
     const element = dis[index]["discount getPercentage"];
     list.push(element)
     this.state.discount.push(element)
-  }
+  } 
+    console.log(list)
     return list
   }
   )
@@ -130,17 +131,28 @@ componentDidMount(){
   this.getalldiscount()
   this.getallcategory()
   console.log(this.state.catName)
+  console.log(this.state.discount)
 }
 
 
   addProduct(){
     axios
       .post(BACKEND_URL + `/SellerAddProduct?name=${this.state.name}&price=${this.state.price}&sellername=${this.state.sellername}`+
-                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.percentage}&specification=${this.state.specefecation}`)
+                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.discount }&specification=${this.state.specefecation}`)
   }
 
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    alert('cat' + this.state.catName)
+    alert('desc' + this.state.descreption)
+    alert('discount ' + this.state.discount)
+    // alert('perst' + this.state.percentage)
+    alert('spec' + this.state.specefecation)
+    alert('name' + this.state.name)
+    alert('prics' + this.state.price)
+    alert('categories' + this.state.categories)
+    // alert('cat' + this.state.categories)
     this.addProduct()
     return <Redirect to="/SellerDashBoard"/>
   }
@@ -226,7 +238,7 @@ componentDidMount(){
               value={this.state.catName}
               onChange={this.handleProductcatNameChange}
             /> */}
-            <Dropdown options={this.state.catName} onChange={(values)=>this.setState({categories:values})} placeholder="Select an option" value={this.state.categories}/>
+            <Dropdown options={this.state.catName} onChange={(values)=>this.setState({categories:values.value})} placeholder="Select an option" value={this.state.categories}/>
 
             
             <br />
@@ -237,7 +249,7 @@ componentDidMount(){
               <b>percentage (Modify It TO DROP DOWN )</b>
             </label>
             <br />
-            <Dropdown options={this.state.discount} onChange={(values)=>this.setState({percentage:values})} placeholder="Select an discount" value={this.state.percentage}/>
+            <Dropdown options={this.state.discount} onChange={(values)=>this.setState({percentage:Number(values.value)})} placeholder="Select an discount" value={this.state.percentage}/>
             <br />
             <br />
             <label className="form_error" id="err_name"></label>
