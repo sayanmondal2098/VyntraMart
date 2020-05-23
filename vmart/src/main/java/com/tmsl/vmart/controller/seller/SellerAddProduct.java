@@ -1,5 +1,9 @@
 package com.tmsl.vmart.controller.seller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.json.JSONObject;
@@ -44,7 +48,8 @@ public class SellerAddProduct {
 	public ResponseEntity<String> addProductEntityByEntitySeller(@RequestParam("name") String name,
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
-			@RequestParam("percentage") Double percentage, @RequestParam("specification") Set<String> specification) {
+			@RequestParam("percentage") Double percentage, @RequestParam("specification") Set<String> specification,
+			@RequestParam("piclist") String piclist) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
 		product.setName(name);
@@ -54,7 +59,11 @@ public class SellerAddProduct {
 		product.setDescription(descreptionString);
 		product.setDiscount(discountDAO.getDiscountByValue(percentage));
 		product.setSpecification(specification);
-//		product.setPicList(new HashSet<String>(Arrays.asList(picList.split(","))));
+		String[] elements = piclist.split(",");
+		List<String> fixedLenghtList = Arrays.asList(elements);
+		ArrayList<String> listOfString = new ArrayList<String>(fixedLenghtList);
+		Set<String> s = new HashSet<String>(listOfString);
+		product.setPicList(s);
 //		product.setSpecification(new HashSet<String>(Arrays.asList(specification.split(","))));
 		if (productDAO.saveproduct(product)) {
 			result.put("registration_status", "successful");
