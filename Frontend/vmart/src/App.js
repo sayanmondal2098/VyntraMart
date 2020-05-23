@@ -27,7 +27,6 @@ class App extends Component {
             <Route path="/SellerAddProduct" component={SellerAddProduct} />
 
             <Route path="/" component={Home} />
-
           </Switch>
         </div>
       </BrowserRouter>

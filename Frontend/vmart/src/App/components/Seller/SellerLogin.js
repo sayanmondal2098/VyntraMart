@@ -92,7 +92,7 @@ class SellerLogin extends React.Component {
             loggedIn:true
           })
         } else {
-          this.errormsg("err_sellerName", "Invalid credential");
+          this.errormsg("err_name", "Invalid credential");
           this.errormsg("err_password", "Invalid credential");
         }
       }

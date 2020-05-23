@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ProductsCategory from "./ProductsCategory";
 import HomeView from "./HomeView";
+import ProductPage from "./ProductPage";
 
 class Home extends React.Component {
 
@@ -19,6 +20,7 @@ class Home extends React.Component {
         </Helmet>
           <Switch>
             <Route path="/products/:catID/:catName" component={ProductsCategory} />
+            <Route path="/product/:pID/:pName" component={ProductPage} />
             <Route path="/" component={HomeView} />
           </Switch>
 

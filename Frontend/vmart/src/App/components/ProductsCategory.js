@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { BACKEND_URL } from "../config/Config";
 import axios from "axios";
 import renderHTML from "react-render-html";
@@ -101,7 +102,11 @@ export default class ProductsCategory extends Component {
       return null;
     } else {
       return (
-        <div className="ProductsCategory">
+        <div className="ProductsCategory">   
+        <Helmet>
+          <title>{this.state.catName} | VMart</title>
+        </Helmet>
+          <br/><br/>
           <label className="blackHeadlbl">{this.state.catName}</label>
               <br /><br/>
           {renderHTML(this.prodView())}

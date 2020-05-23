@@ -11,6 +11,8 @@ public interface ProductDAO {
 	public List<Product> getAllProducts();
 	
 	public List<Product> getProductsByCategory(String catID);
+	
+	public Product getProductsByPID(Long pID);
 
 	public boolean isExistingProduct(Long pId);
 
