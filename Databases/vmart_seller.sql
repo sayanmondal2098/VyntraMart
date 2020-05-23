@@ -40,7 +40,7 @@ CREATE TABLE `seller` (
 
 LOCK TABLES `seller` WRITE;
 /*!40000 ALTER TABLE `seller` DISABLE KEYS */;
-INSERT INTO `seller` VALUES (15,'493, B/12, Grand Trunk Rd, Choura Bustee, Shibpur, Kolkata, West Bengal 711102','22.5715971,88.3297022','Das Enterprises','9820420420','y','344c22847b81b1caee1ee53b71fa9f33');
+INSERT INTO `seller` VALUES (15,'493, B/12, Grand Trunk Rd, Choura Bustee, Shibpur, Kolkata, West Bengal 711102','22.5715971,88.3297022','Das Enterprises','9820420420','y','e10adc3949ba59abbe56e057f20f883e');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-19 13:47:52
+-- Dump completed on 2020-05-23 15:26:16

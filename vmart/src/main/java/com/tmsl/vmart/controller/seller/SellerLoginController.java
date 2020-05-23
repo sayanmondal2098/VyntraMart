@@ -2,6 +2,8 @@ package com.tmsl.vmart.controller.seller;
 
 import static com.tmsl.vmart.utils.Encryptionmd5.md5;
 
+import java.net.URLDecoder;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,25 +19,25 @@ import com.tmsl.vmart.model.Seller;
 
 @CrossOrigin
 @Controller
-<<<<<<< HEAD
-public class SellerRegisterController {
-=======
+//<<<<<<< HEAD
+//public class SellerRegisterController {
+//=======
 public class SellerLoginController {
->>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
+//>>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
 
 	@Autowired
 	private SellerDAO sellerDAO;
 
-<<<<<<< HEAD
-	public SellerRegisterController(SellerDAO sellerDAO) {
-=======
+//<<<<<<< HEAD
+//	public SellerRegisterController(SellerDAO sellerDAO) {
+//=======
 	public SellerLoginController(SellerDAO sellerDAO) {
->>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
+//>>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
 		super();
 		this.sellerDAO = sellerDAO;
 	}
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	@RequestMapping(value = "/sellerRegister", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestParam("name") String name,
 			@RequestParam("password") String password,@RequestParam("phonenumber") String phonenumber ) {
@@ -61,16 +63,19 @@ public class SellerLoginController {
 		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
 	
-=======
+//=======
 	@RequestMapping(value = "/sellerLogin", method = RequestMethod.POST)
 	public ResponseEntity<String> sellerLogin(@RequestParam("name") String name,
 			@RequestParam("password") String password) {
+		String fname=URLDecoder.decode(name);
+		System.out.println(fname);
+		System.out.println(md5(password));
 		JSONObject result = new JSONObject();
-		if (sellerDAO.isExistingSeller(name)) {
+		if (sellerDAO.isExistingSeller(fname)) {
 			result.put("existence_check", "found");
-			if (sellerDAO.verifySeller(name, md5(password))) {
+			if (sellerDAO.verifySeller(fname, md5(password))) {
 				result.put("login_status", "successful");
-				Seller seller = sellerDAO.getSellerByLoginCredentials(name, md5(password));
+				Seller seller = sellerDAO.getSellerByLoginCredentials(fname, md5(password));
 				result.put("sid", seller.getSellerID());
 				result.put("name", seller.getName());
 				result.put("verified", seller.getVerified());
@@ -83,5 +88,5 @@ public class SellerLoginController {
 		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
 
->>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
+//>>>>>>> 2d6f825bdbfdfbe720f6dab6764e618df10a6b5c
 }
