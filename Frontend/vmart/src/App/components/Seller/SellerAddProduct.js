@@ -144,17 +144,16 @@ componentDidMount(){
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert('cat' + this.state.catName)
-    alert('desc' + this.state.descreption)
-    alert('discount ' + this.state.discount)
-    // alert('perst' + this.state.percentage)
-    alert('spec' + this.state.specefecation)
-    alert('name' + this.state.name)
-    alert('prics' + this.state.price)
-    alert('categories' + this.state.categories)
+    // alert('cat' + this.state.catName)
+    // alert('desc' + this.state.descreption)
+    // alert('discount ' + this.state.discount)
+    // // alert('perst' + this.state.percentage)
+    // alert('spec' + this.state.specefecation)
+    // alert('name' + this.state.name)
+    // alert('prics' + this.state.price)
+    // alert('categories' + this.state.categories)
     // alert('cat' + this.state.categories)
     this.addProduct()
-    return <Redirect to="/SellerDashBoard"/>
   }
 
   render(){
@@ -273,7 +272,7 @@ componentDidMount(){
             <input className="form_btn" type="submit" value="Continue" />
             
           </form>
-          <button href="/SellerDashBoard">Back</button>
+          <button lassName="form_btn" href="/SellerDashBoard">Back</button>
           <br />
           <br />
         </div>
