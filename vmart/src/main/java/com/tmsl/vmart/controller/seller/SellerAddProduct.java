@@ -1,7 +1,5 @@
 package com.tmsl.vmart.controller.seller;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.json.JSONObject;

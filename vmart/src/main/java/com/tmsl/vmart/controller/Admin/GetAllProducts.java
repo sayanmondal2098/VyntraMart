@@ -1,10 +1,7 @@
 package com.tmsl.vmart.controller.Admin;
 
-import java.io.Console;
 import java.util.List;
-import java.util.Set;
 
-import org.hibernate.Hibernate;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tmsl.vmart.dao.ProductDAO;
-import com.tmsl.vmart.model.Discount;
 import com.tmsl.vmart.model.Product;
 
 @CrossOrigin
@@ -100,6 +96,47 @@ public class GetAllProducts {
 		result.put("products", productList);		
 		result.put("status", "success");
 		result.put("message", "products_found");
+		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/prod", method = RequestMethod.POST)
+	public ResponseEntity<String> ProductsByPID(@RequestParam("prod_id") Long pID) {
+		JSONObject result = new JSONObject();
+		Product product = productDAO.getProductsByPID(pID);
+		if(null==product)
+		{
+			result.put("status", "error");
+			result.put("message", "product_not_found");
+			return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		}
+		JSONArray picList=new JSONArray();
+		for(String s:product.getPicList())
+		{
+			JSONObject obj=new JSONObject();
+			obj.put("url", s);
+			picList.put(obj);
+		}
+		result.put("pictures",picList);
+		result.put("category", product.getCategory().getCatName());
+		result.put("discount", product.getDiscount().getPercentage());
+		result.put("price", product.getPrice());	
+		result.put("sellerID", product.getSeller().getSellerID());
+		result.put("sellerName", product.getSeller().getName());
+		result.put("sellerAddress", product.getSeller().getAddress());
+		result.put("sellerPhone", product.getSeller().getPhoneNo());
+		result.put("sellerGPS", product.getSeller().getGpsCoordinates());
+		result.put("sellerVerified", product.getSeller().getVerified());
+		JSONArray specList=new JSONArray();
+		for(String s:product.getSpecification())
+		{
+			JSONObject obj=new JSONObject();
+			obj.put("spec", s);
+			specList.put(obj);
+		}
+		result.put("specifications",specList);
+		result.put("description", product.getDescription());	
+		result.put("status", "success");
+		result.put("message", "product_found");
 		return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 	}
 

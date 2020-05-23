@@ -184,6 +184,21 @@ div.foot_list_container{
   height: auto;
   margin: 10px;
 }
+div.img_grid{
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  width: 59%;
+  height: 100%;
+  margin: 1px;
+}
+div.prod_details{
+  display: inline-block;
+  vertical-align: top;
+  width: 39%;
+  height: 100%;
+  margin: 1px;
+}
 .foot_normal_lbl{
   font-family: "Lato", sans-serif;
   font-weight: bold;
@@ -217,6 +232,67 @@ label.blackHeadlbl{
   height: auto;
   margin: 5px;
 }
+label.blackH1lbl{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  height: auto;
+  margin: 5px;
+}
+label.textgreyH1 {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color: grey;
+  height: auto;
+  margin: 5px;
+}
+label.textSpecHead {
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  color: grey;
+  height: auto;
+  margin: 5px;
+}
+label.textSpecParHead {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  color: grey;
+  height: auto;
+  margin: 5px;
+}
+label.textSpecBody {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+  height: auto;
+  margin: 5px;
+}
+label.textgreyH1_strikethrough {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color: grey;
+  height: auto;
+  margin: 5px;
+  text-decoration: line-through;
+}
+label.textofferBig {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(226, 122, 24);
+  height: auto;
+  margin: 5px;
+}
+label.textTaxesSmall {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgb(5, 141, 100);
+  height: auto;
+  margin: 5px;
+}
 table.categoryhome_table{
   width: 100%;
   text-align: center;
@@ -233,8 +309,18 @@ table.categoryhome_table{
   margin: 10px;
   padding: 5px;
 }
+.ProductsCategory{
+  margin: 10px;
+}
+.ProductPage{
+  margin: 5px;
+}
 img.card{
   width: 80%;
+}
+img.gall_image{
+  width: 47%;
+  margin: 1px;
 }
 
 

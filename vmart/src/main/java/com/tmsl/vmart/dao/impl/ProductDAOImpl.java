@@ -75,6 +75,14 @@ public class ProductDAOImpl implements ProductDAO {
 		return pList;
 	}
 
+	public Product getProductsByPID(Long pID) {
+		Session session = sessionFactory.getCurrentSession();
+		Product product = (Product) session.createQuery("from products where pid=:param_pId")
+				.setParameter("param_pId", pID)
+				.uniqueResult();
+		return product;
+	}
+
 
 
 }
