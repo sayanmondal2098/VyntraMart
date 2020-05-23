@@ -6,7 +6,8 @@ import { BACKEND_URL } from "../../config/Config";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import transitions from "@material-ui/core/styles/transitions";
 
 
 
@@ -29,6 +30,7 @@ class SellerAddProduct extends React.Component {
       discount:[],
       percentage:"",
       specefecation: "",
+      piclist: "",
       loggedIn
     };
     // this.catRender = this.catRender.bind(this);
@@ -69,6 +71,12 @@ class SellerAddProduct extends React.Component {
   handleProductspecefecationChange = (event) => {
     this.setState({
       specefecation : event.target.value,
+    });
+  };
+
+  handlePiclistChange = (event) => {
+    this.setState({
+      piclist : event.target.value,
     });
   };
 
@@ -138,7 +146,8 @@ componentDidMount(){
   addProduct(){
     axios
       .post(BACKEND_URL + `/SellerAddProduct?name=${this.state.name}&price=${this.state.price}&sellername=${this.state.sellername}`+
-                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.discount }&specification=${this.state.specefecation}`)
+                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.discount }`+
+                  `&specification=${this.state.specefecation}&piclist=${this.state.piclist}`)
   }
 
 
@@ -154,6 +163,7 @@ componentDidMount(){
     // alert('categories' + this.state.categories)
     // alert('cat' + this.state.categories)
     this.addProduct()
+    alert('product added successfully ')
   }
 
   render(){
@@ -202,7 +212,7 @@ componentDidMount(){
               onChange={this.handlePriceChange}
             />
             <br />
-            <br />
+            
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
@@ -220,36 +230,23 @@ componentDidMount(){
               onChange={this.handleProductDescreptionChange}
             />
             <br />
-            <br />
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
               <b>Catarory Name </b>
             </label>
             <br />
-            {/* <input
-              className="form_ed"
-              type="password"
-              onKeyDown={this.txt_tracker}
-              maxLength="1024"
-              name="password"
-              id="password"
-              value={this.state.catName}
-              onChange={this.handleProductcatNameChange}
-            /> */}
-            <Dropdown options={this.state.catName} onChange={(values)=>this.setState({categories:values.value})} placeholder="Select an option" value={this.state.categories}/>
 
+            <Dropdown options={this.state.catName} onChange={(values)=>this.setState({categories:values.value})} placeholder="Select an option" value={this.state.categories}/>
             
-            <br />
             <br />
             <label className="form_error" id="err_name"></label>
             <br />
             <label className="form">
-              <b>percentage (Modify It TO DROP DOWN )</b>
+              <b>percentage</b>
             </label>
             <br />
             <Dropdown options={this.state.discount} onChange={(values)=>this.setState({percentage:Number(values.value)})} placeholder="Select an discount" value={this.state.percentage}/>
-            <br />
             <br />
             <label className="form_error" id="err_name"></label>
             <br />
@@ -267,13 +264,30 @@ componentDidMount(){
               onChange={this.handleProductspecefecationChange}
             />
             <br />
+            <br />
+            <label className="form_error" id="err_name"></label>
+            <br />
+            <label className="form">
+              <b>PicList</b>
+            </label>
+            <br />
+            <input
+              className="form_ed"
+              type="test"
+              onKeyDown={this.txt_tracker}
+              maxLength="1024"
+              name="Piclist"
+              placeholder="enter url in comma seperated values"
+              value={this.state.piclist}
+              onChange={this.handlePiclistChange}
+            />
+            <br />
             <label className="form_error" id="err_password"></label>
             <br />
             <input className="form_btn" type="submit" value="Continue" />
             
           </form>
           <button lassName="form_btn" href="/SellerDashBoard">Back</button>
-          <br />
           <br />
         </div>
       </div>
