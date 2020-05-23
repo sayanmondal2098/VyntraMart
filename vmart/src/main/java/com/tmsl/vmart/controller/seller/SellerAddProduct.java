@@ -18,7 +18,6 @@ import com.tmsl.vmart.dao.ProductDAO;
 import com.tmsl.vmart.dao.SellerDAO;
 import com.tmsl.vmart.model.Product;
 
-
 @CrossOrigin
 @Controller
 public class SellerAddProduct {
@@ -32,8 +31,8 @@ public class SellerAddProduct {
 	@Autowired
 	private DiscountDAO discountDAO;
 
-
-	public SellerAddProduct(ProductDAO productDAO, SellerDAO sellerDAO,CategoryDAO categoryDAO,DiscountDAO discountDAO) {
+	public SellerAddProduct(ProductDAO productDAO, SellerDAO sellerDAO, CategoryDAO categoryDAO,
+			DiscountDAO discountDAO) {
 		super();
 		this.productDAO = productDAO;
 		this.sellerDAO = sellerDAO;
@@ -45,9 +44,7 @@ public class SellerAddProduct {
 	public ResponseEntity<String> addProductEntityByEntitySeller(@RequestParam("name") String name,
 			@RequestParam("price") Double price, @RequestParam("sellername") String sellerName,
 			@RequestParam("descreption") String descreptionString, @RequestParam("catName") String catName,
-			@RequestParam("percentage") Double percentage,
-			@RequestParam("picList") Set<String> picList,
-			@RequestParam("specification") Set<String> specification) {
+			@RequestParam("percentage") Double percentage, @RequestParam("specification") Set<String> specification) {
 		JSONObject result = new JSONObject();
 		Product product = new Product();
 		product.setName(name);
@@ -57,7 +54,6 @@ public class SellerAddProduct {
 		product.setDescription(descreptionString);
 		product.setDiscount(discountDAO.getDiscountByValue(percentage));
 		product.setSpecification(specification);
-		product.setPicList(picList);
 //		product.setPicList(new HashSet<String>(Arrays.asList(picList.split(","))));
 //		product.setSpecification(new HashSet<String>(Arrays.asList(specification.split(","))));
 		if (productDAO.saveproduct(product)) {
