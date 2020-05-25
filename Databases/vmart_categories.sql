@@ -37,7 +37,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (8,'https://i.ibb.co/ncpHS9n/mens-tshirt.png','Men\'s T-Shirt','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/da1bfb5e-6017-4dd5-8f71-568f2693fc731583845228670-22.jpg'),(9,'https://i.ibb.co/P63GtbT/womens-top.png','Women\'s Tops','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/16debe32-a700-4cea-8724-ff2d91f5b5a11583845228429-12.jpg'),(10,'https://i.ibb.co/yp4XFGQ/womens-dresses.png','Women\'s Dresses','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/da0eb34d-4594-4ca5-af2c-3f40d21c98fb1583845228353-10.jpg'),(11,'https://i.ibb.co/zF4FK4c/mens-casualshirts.png','Men\'s Casual Shirts','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/4a7f41f4-aaf2-4aec-8e9f-fc785f87cf491583845228707-33.jpg'),(12,'https://i.ibb.co/TBsVS3N/mens-casualtrousers.png','Men\'s Casual Trousers','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/4/16/5919ab50-6d27-4467-98b9-d69628b233621587023737170-6.jpg'),(13,'https://i.ibb.co/KmZcQ0t/womens-kurtas.png','Women\'s Kurtas','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/c9995341-7675-4835-ad63-f99988b90bcb1583845228786-111.jpg');
+INSERT INTO `categories` VALUES (8,'https://i.ibb.co/ncpHS9n/mens-tshirt.png','Men\'s T-Shirt','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/da1bfb5e-6017-4dd5-8f71-568f2693fc731583845228670-22.jpg'),(9,'https://i.ibb.co/P63GtbT/womens-top.png','Women\'s Tops','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/16debe32-a700-4cea-8724-ff2d91f5b5a11583845228429-12.jpg'),(10,'https://i.ibb.co/yp4XFGQ/womens-dresses.png','Women\'s Dresses','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/3/10/da0eb34d-4594-4ca5-af2c-3f40d21c98fb1583845228353-10.jpg'),(12,'https://i.ibb.co/TBsVS3N/mens-casualtrousers.png','Men\'s Casual Trousers','https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/4/16/5919ab50-6d27-4467-98b9-d69628b233621587023737170-6.jpg');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-23 15:26:18
+-- Dump completed on 2020-05-23 19:45:56
