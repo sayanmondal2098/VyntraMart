@@ -13,11 +13,12 @@ select * from vmart.categories;
 select * from vmart.customer_details;
 select * from vmart.discounts;
 select * from vmart.products;
+select * from vmart.discounts;
 delete from vmart.products where pid = 2;
 select * from vmart.categories where catName="test";
 insert into vmart.discounts values (1,10.00);
 select * from vmart.discounts where percentage = 10.00 ;
-delete from vmart.discounts where percentage =  10;
+
 desc vmart.products;
 insert into vmart.PromoImage values(1,'Img1','https://www.google.com','https://i.picsum.photos/id/0/5616/3744.jpg');
 insert into vmart.PromoImage values(2,'Img2','https://www.google.com','https://i.picsum.photos/id/1/5616/3744.jpg');

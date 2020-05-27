@@ -35,7 +35,7 @@ public class SellerProductDetails {
 	}
 
 	@RequestMapping(value = "/SellergetAllProducts", method = RequestMethod.POST)
-	public ResponseEntity<String> AllProductBySeller(@RequestParam("sellerId") String SellerName) {
+	public ResponseEntity<String> AllProductBySeller(@RequestParam("sellerName") String SellerName) {
 		
 		Seller thisSeller = sellerDAO.getSellerBySellerName(SellerName);
 		List<Product> products = productDAO.getProductBySellerName(thisSeller);
