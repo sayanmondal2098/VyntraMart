@@ -12,7 +12,7 @@ import logo from "../../../Assects//img//vmart-logo.png";
 class SellerRegister extends React.Component {
   constructor(props) {
     super(props);
-    const seller_sess_token=localStorage.getItem("session_token");
+    const seller_sess_token=localStorage.getItem("seller_sess_token");
     let sloggedIn=true;
     if(seller_sess_token==null)
     {
@@ -115,7 +115,7 @@ class SellerRegister extends React.Component {
         this.errormsg("err_sellerName", "Seller already in use");
       } else {
         if (response.data.registration_status === "successful") {
-          localStorage.setItem("session_token",makeid(15));
+          localStorage.setItem("seller_sess_token",makeid(15));
           localStorage.setItem("sid",response.data.sid);
           localStorage.setItem("name",response.data.name);
           this.setState({
@@ -177,7 +177,7 @@ class SellerRegister extends React.Component {
               onChange={this.handlePhoneNoChange}
             />
             <br />
-            <label className="form_error" id="err_name"></label>
+            <label className="form_error" id="err_phonenumber"></label>
             <br />
             <label className="form">
               <b>Password</b>

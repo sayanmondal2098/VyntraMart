@@ -9,7 +9,7 @@ import { Redirect } from "react-router-dom";
 class SellerLogin extends React.Component {
   constructor(props) {
     super(props);
-    const seller_sess_token=localStorage.getItem("sname");
+    const seller_sess_token=localStorage.getItem("seller_sess_token");
     let sloggedIn=true;
     if(seller_sess_token==null)
     {
