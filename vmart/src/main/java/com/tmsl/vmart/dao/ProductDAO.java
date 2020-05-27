@@ -11,7 +11,7 @@ public interface ProductDAO {
 
 	public List<Product> getAllProducts();
 	
-	public List<Product> getProductsByCategory(String catID);
+	public List<Product> getProductsByCategory(Long catID);
 	
 	public Product getProductsByPID(Long pID);
 

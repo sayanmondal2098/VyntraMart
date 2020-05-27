@@ -67,7 +67,7 @@ public class GetAllProducts {
 	}
 	
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
-	public ResponseEntity<String> ProductsByCat(@RequestParam("cat_id") String catID) {
+	public ResponseEntity<String> ProductsByCat(@RequestParam("cat_id") Long catID) {
 		JSONObject result = new JSONObject();
 		List<Product> products = productDAO.getProductsByCategory(catID);
 		if(products.size()==0)

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ProductDAOImpl implements ProductDAO {
 		try {
 			session.save(product);
 			return true;
-		} catch (Exception e) {
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -58,11 +59,11 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 	
-
-	public List<Product> getProductsByCategory(String catID) {
+	@SuppressWarnings("unchecked")
+	public List<Product> getProductsByCategory(Long catID) {
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List<Product> pList = session.createQuery("from Product where catid=:param_catID")
+		List<Product> pList = session
+			.createQuery("from Product where catid=:param_catID")
 			.setParameter("param_catID", catID)
 			.list();
 		return pList;
