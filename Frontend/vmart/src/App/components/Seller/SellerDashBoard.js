@@ -52,7 +52,7 @@ class SellerDashBoard extends React.Component {
   }
 
   handleLogout(event) {
-    localStorage.removeItem("session_token")
+    localStorage.removeItem("seller_session_token")
     localStorage.removeItem("sid");
     localStorage.removeItem("sname");
 
