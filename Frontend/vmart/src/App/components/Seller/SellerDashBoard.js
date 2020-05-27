@@ -7,29 +7,37 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
+import SellerLogin from './SellerLogin'
 
 // import { ReactMUIDatatable } from "react-material-ui-datatable";
 
 
 import "../../../Assects/css/DashBoaed.css";
 import { BACKEND_URL } from "../../config/Config";
+import { Redirect } from "react-router-dom";
+import Axios from "axios";
+
 
 
 class SellerDashBoard extends React.Component {
   constructor(props) {
     super(props);
     const sess_token = localStorage.getItem("sname");
-    let loggedIn = true;
+    let sloggedIn = true;
     if (sess_token == null) {
-      loggedIn = false;
+      sloggedIn = false;
     }
     this.state = {
       SellesData: [],
-      loggedIn
+      sloggedIn
     };
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
+    if (localStorage.getItem("sid")==null) {
+      return SellerLogin
+    }
     const url = BACKEND_URL + `/`;
     fetch(url, {
       method: "POST",
@@ -42,6 +50,19 @@ class SellerDashBoard extends React.Component {
         console.log(localStorage.getItem("sid") + " ~test~ " + localStorage.getItem("sname"))
       )
   }
+
+  handleLogout(event) {
+    localStorage.removeItem("session_token")
+    localStorage.removeItem("sid");
+    localStorage.removeItem("sname");
+
+    this.setState({
+      sloggedIn: false,
+    });
+
+  }
+
+
 
   render() {
     const sellsData = [{
@@ -70,7 +91,7 @@ class SellerDashBoard extends React.Component {
                 <Button variant="contained" color="primary" href="/SellerAddProduct">
                   Add Products
               </Button>
-                <Button variant="contained" color="secondary" >
+                <Button variant="contained" color="secondary" onClick={this.handleLogout} href="/">
                   Log Out
               </Button>
               </Grid>
@@ -270,7 +291,7 @@ class SellerDashBoard extends React.Component {
             </Grid>
           </Grid>
 
-          <div>
+          {/* <div>
             <div className="sellsgraph-box-heading">
               Sells Graph
             </div>
@@ -282,7 +303,7 @@ class SellerDashBoard extends React.Component {
                 <Paper className="paper">xs=6</Paper>
               </Grid>
             </Grid>
-          </div>
+          </div> */}
 
           <div className="">
             <Grid item xs={10}>

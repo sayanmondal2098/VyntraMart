@@ -6,8 +6,7 @@ import { BACKEND_URL } from "../../config/Config";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import axios from "axios";
-import { Redirect, useHistory } from "react-router-dom";
-import transitions from "@material-ui/core/styles/transitions";
+
 
 
 

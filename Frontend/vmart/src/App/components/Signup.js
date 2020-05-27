@@ -1,7 +1,7 @@
 // import React, { Component } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
-import { axios } from "axios";
+import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { BACKEND_URL,makeid } from "../config/Config";
 import "../../Assects/css/main.css";

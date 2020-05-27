@@ -10,15 +10,15 @@ class SellerLogin extends React.Component {
   constructor(props) {
     super(props);
     const sess_token=localStorage.getItem("sname");
-    let SellerloggedIn=true;
+    let sloggedIn=true;
     if(sess_token==null)
     {
-      SellerloggedIn=false;
+      sloggedIn=false;
     }
     this.state = {
       name: "",
       password: "",
-      SellerloggedIn
+      sloggedIn
     };
   }
 
@@ -89,7 +89,7 @@ class SellerLogin extends React.Component {
           localStorage.setItem("sid",response.data.sid);
           localStorage.setItem("sname",response.data.name);
           this.setState({
-            loggedIn:true
+            sloggedIn:true
           })
         } else {
           this.errormsg("err_name", "Invalid credential");
@@ -100,7 +100,7 @@ class SellerLogin extends React.Component {
   }
 
   render() {
-    if(this.state.SellerloggedIn)
+    if(this.state.sloggedIn)
     {
       return <Redirect to="/SellerDashBoard"/>
     }
