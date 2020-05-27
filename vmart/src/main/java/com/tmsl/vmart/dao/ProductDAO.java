@@ -3,6 +3,7 @@ package com.tmsl.vmart.dao;
 import java.util.List;
 
 import com.tmsl.vmart.model.Product;
+import com.tmsl.vmart.model.Seller;
 
 public interface ProductDAO {
 
@@ -16,6 +17,6 @@ public interface ProductDAO {
 
 	public boolean isExistingProduct(Long pId);
 
-	public Product getProductBySellerName(Integer pId);
+	public  List<Product>  getProductBySellerName(Seller seller);
 
 }

@@ -13,10 +13,10 @@ import axios from "axios";
 class SellerAddProduct extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("session_token");
+    const seller_sess_token = localStorage.getItem("seller_sess_token");
     // let catName = []
     let loggedIn = true;
-    if (sess_token == null) {
+    if (seller_sess_token == null) {
       loggedIn = false;
     }
     this.state = {
@@ -145,7 +145,7 @@ componentDidMount(){
   addProduct(){
     axios
       .post(BACKEND_URL + `/SellerAddProduct?name=${this.state.name}&price=${this.state.price}&sellername=${this.state.sellername}`+
-                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.discount }`+
+                  `&descreption=${this.state.descreption}&catName=${this.state.categories}&percentage=${this.state.percentage}`+
                   `&specification=${this.state.specefecation}&piclist=${this.state.piclist}`)
   }
 
