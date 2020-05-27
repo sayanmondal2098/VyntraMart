@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.tmsl.vmart.config.ApplicationContextConfig;
 import com.tmsl.vmart.dao.ProductDAO;
 import com.tmsl.vmart.model.Product;
+import com.tmsl.vmart.model.Seller;
 
 @Repository
 @Transactional
@@ -40,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Product> pList = session.createQuery("from products").list();
+		List<Product> pList = session.createQuery("from Product").list();
 		return pList;
 	}
 
@@ -57,19 +58,11 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 	
-	public Product getProductBySellerName(Integer pId) {
-		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List<Product> pList = session.createQuery("from Product where pid=:param_pId")
-				.setParameter("param_pId", pId)
-				.list();
-		return pList.get(0);
-	}
 
 	public List<Product> getProductsByCategory(String catID) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<Product> pList = session.createQuery("from products where catid=:param_catID")
+		List<Product> pList = session.createQuery("from Product where catid=:param_catID")
 			.setParameter("param_catID", catID)
 			.list();
 		return pList;
@@ -77,10 +70,19 @@ public class ProductDAOImpl implements ProductDAO {
 
 	public Product getProductsByPID(Long pID) {
 		Session session = sessionFactory.getCurrentSession();
-		Product product = (Product) session.createQuery("from products where pid=:param_pId")
+		Product product = (Product) session.createQuery("from Product where pid=:param_pId")
 				.setParameter("param_pId", pID)
 				.uniqueResult();
 		return product;
+	}
+
+	public List<Product> getProductBySellerName(Seller seller) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Product> pList = session.createQuery("from Product where seller=:param_seller")
+				.setParameter("param_seller", seller)
+				.list();
+		return pList;
 	}
 
 

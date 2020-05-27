@@ -77,6 +77,14 @@ public class SellerDAOImpl implements SellerDAO {
 				.setParameter("param_name", name).list();
 		return seller.get(0);
 	}
+	
+	public Seller getSellerBySellerId(Integer sid) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Seller> seller =  session.createQuery("from Seller where sellerID=:param_sid")
+				.setParameter("param_sid", sid).list();
+		return seller.get(0);
+	}
 
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub

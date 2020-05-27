@@ -29,7 +29,7 @@ public class GetAllProducts {
 	}
 
 	@RequestMapping(value = "/all_products", method = RequestMethod.POST)
-	public ResponseEntity<String> Login(@RequestParam("adminId") String adminEmail,
+	public ResponseEntity<String> AllProduct(@RequestParam("adminId") String adminEmail,
 			@RequestParam("password") String adminPassword) {
 		List<Product> products = productDAO.getAllProducts();
 		JSONObject result = new JSONObject();

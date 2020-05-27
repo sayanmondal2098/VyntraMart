@@ -9,9 +9,9 @@ import { Redirect } from "react-router-dom";
 class SellerLogin extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token=localStorage.getItem("sname");
+    const seller_sess_token=localStorage.getItem("sname");
     let sloggedIn=true;
-    if(sess_token==null)
+    if(seller_sess_token==null)
     {
       sloggedIn=false;
     }
@@ -85,7 +85,7 @@ class SellerLogin extends React.Component {
         this.errormsg("err_email", "Email does not exist. Sign Up first");
       } else {
         if (response.data.login_status === "successful") {
-          localStorage.setItem("session_token",makeid(15));
+          localStorage.setItem("seller_session_token",makeid(15));
           localStorage.setItem("sid",response.data.sid);
           localStorage.setItem("sname",response.data.name);
           this.setState({
