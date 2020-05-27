@@ -103,10 +103,13 @@ class Header extends React.Component {
         </form>
         <div className="head_tab" id="seller">
           {button}
+
+          <a href="/SellerLogin">
           <label className="tab">
             <img className="inline" src={briefcase} alt="sellIcon" />
             Sell on VMart
           </label>
+          </a>
         </div>
         <div className="head_tab" id="cart">
           <label className="tab">

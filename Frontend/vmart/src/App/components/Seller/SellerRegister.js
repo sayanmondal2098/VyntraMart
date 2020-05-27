@@ -13,17 +13,17 @@ class SellerRegister extends React.Component {
   constructor(props) {
     super(props);
     const sess_token=localStorage.getItem("session_token");
-    let loggedIn=true;
+    let sloggedIn=true;
     if(sess_token==null)
     {
-      loggedIn=false;
+      sloggedIn=false;
     }
     this.state = {
       name: "",
       phonenumber: "",
       password: "",
       repassword: "",
-      loggedIn         
+      sloggedIn         
     };
   }
 
@@ -119,7 +119,7 @@ class SellerRegister extends React.Component {
           localStorage.setItem("sid",response.data.sid);
           localStorage.setItem("name",response.data.name);
           this.setState({
-            loggedIn:true
+            sloggedIn:true
           })
         } else {
           alert("Seller not registered");
@@ -129,9 +129,9 @@ class SellerRegister extends React.Component {
   }
 
   render() {
-    if(this.state.loggedIn)
+    if(this.state.sloggedIn)
     {
-      return <Redirect to="/"/>
+      return <Redirect to="/SellerDashBoard"/>
     }
     return (
       <div className="Signup">
