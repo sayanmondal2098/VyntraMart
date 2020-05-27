@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "Seller")
 public class Seller {
 
-	private Long sellerID;
+	private long sellerID;
 	private String name;
 	private String password;
 	private String address;
@@ -27,7 +27,7 @@ public class Seller {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getSellerID() {
+	public long getSellerID() {
 		return sellerID;
 	}
 

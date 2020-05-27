@@ -7,9 +7,9 @@ import "../../../Assects/css/DashBoaed.css";
 class DashBoardHeader extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("session_token");
+    const seller_sess_token = localStorage.getItem("seller_sess_token");
     let loggedIn = true;
-    if (sess_token == null) {
+    if (seller_sess_token == null) {
       loggedIn = false;
     }
     this.state = {
@@ -51,7 +51,7 @@ class DashBoardHeader extends React.Component {
     this.setState({
       loggedIn: false,
     });
-    localStorage.removeItem("session_token");
+    localStorage.removeItem("seller_sess_token");
     localStorage.removeItem("sid");
     localStorage.removeItem("sname");
   }

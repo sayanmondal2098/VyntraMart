@@ -12,9 +12,9 @@ import logo from "../../../Assects//img//vmart-logo.png";
 class SellerRegister extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token=localStorage.getItem("session_token");
+    const seller_sess_token=localStorage.getItem("session_token");
     let sloggedIn=true;
-    if(sess_token==null)
+    if(seller_sess_token==null)
     {
       sloggedIn=false;
     }

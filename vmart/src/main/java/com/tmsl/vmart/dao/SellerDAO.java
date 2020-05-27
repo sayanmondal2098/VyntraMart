@@ -13,6 +13,8 @@ public interface SellerDAO {
 	public boolean verifySeller(String name, String password);
 
 	public Seller getSellerBySellerName(String name);
+	
+	public Seller getSellerBySellerId(Integer sid);
 
 	public List<Product> getAllProducts();
 
@@ -21,5 +23,6 @@ public interface SellerDAO {
 	public boolean removeProduct(Integer pId);
 
 	public Seller getSellerByLoginCredentials(String name, String password);
+
 
 }
