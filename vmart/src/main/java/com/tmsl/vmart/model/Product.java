@@ -17,8 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-@Entity(name = "products")
-@Table
+@Entity
+@Table(name = "products")
 public class Product {
 
 	private Long pid;
