@@ -88,7 +88,7 @@ class Header extends React.Component {
     }
     return (
       <div className="Header">
-        <img className="header_logo" src={logo} alt="Logo" />
+        <a href="/"><img className="header_logo" src={logo} alt="Logo" /></a>
         <form className="search_form" onSubmit={this.handleSearch}>
           <input
             className="search_ed"
