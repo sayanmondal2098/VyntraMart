@@ -39,6 +39,7 @@ More Details:
 
 
 
+<<<<<<< HEAD
 # The Application 
 
 !![Alt text](screenshots/HOMELOGIN.png "Home page 1")
@@ -73,3 +74,40 @@ The Category Page contains the products ubnder a category.
 Product page is page which contains all the necessary information about a products. 
 It Contains the Product Picture , Product Name, Product Descreption , Price and Discounted Prics,
 Product Specifications and Seller Name along with Product Code.
+||||||| dcf3109
+=======
+# The Application 
+
+!![Alt text](screenshots/HOMELOGIN.png "Home page 1")
+!![Alt text](screenshots/HomeLogOut.png "Home page 1") 
+The Home page contains 4 part 
+1. The Header - There are 3 Part. 
+    A. A demo Logo in Left 
+    B. A Search Bar 
+    C. A Login Button , It'll Appear if the user is not Logged'in , If the user is LoggedIn, Then It'll show the User name
+    D. A Seller Button, to access the seller dashboard 
+    E. Cart(0) It'll show the cart item
+    F. A LogOut Button which appears only when the user in Loged In.
+1. Promotion Banner part -  Where slide show of promitional banner will displaied.
+2. The Shop Top Categories part - There some top shop category will be displaied. On click over any category, It'll show the listed items in the category.
+3. The footer - Company Footer and Basic contact information is provided
+
+
+!![Alt text](screenshots/CreateAcc.png "create account")
+It is the form to create the user account. To create the account , the user have to provide there Name, Email and Password. 
+
+!![Alt text](screenshots/Login.png "Login account")
+It is the form to login into the user account. Useing there email and password Credential , The user can login there.
+
+
+!![Alt text](screenshots/UnderCat.png "Product page 1")
+!![Alt text](screenshots/underCat1.png "Product page 1") 
+The Category Page contains the products ubnder a category.
+
+
+!![Alt text](screenshots/Product1.png "Product page 1")
+!![Alt text](screenshots/Product2.png "Product page 1") 
+Product page is page which contains all the necessary information about a products. 
+It Contains the Product Picture , Product Name, Product Descreption , Price and Discounted Prics,
+Product Specifications and Seller Name along with Product Code.
+>>>>>>> b965055f449e79047a608f70e00968b29d15f73d
