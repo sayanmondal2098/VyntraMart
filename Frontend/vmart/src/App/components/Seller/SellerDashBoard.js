@@ -22,9 +22,9 @@ import Axios from "axios";
 class SellerDashBoard extends React.Component {
   constructor(props) {
     super(props);
-    const sess_token = localStorage.getItem("sname");
+    const seller_sess_token = localStorage.getItem("seller_sess_token");
     let sloggedIn = true;
-    if (sess_token == null) {
+    if (seller_sess_token == null) {
       sloggedIn = false;
     }
     this.state = {
